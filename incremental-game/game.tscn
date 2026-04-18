@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://v0uwhrnvy160"]
+
+[ext_resource type="Texture2D" uid="uid://bs4g8661uwhb8" path="res://assets/floor_1/border_blue.png" id="1_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://cc7wetqhr08qv" path="res://assets/floor_1/brick_pattern_blue.png" id="2_7jktm"]
+[ext_resource type="Texture2D" uid="uid://yarmrjq5muem" path="res://assets/floor_1/orb.png" id="3_7jktm"]
+[ext_resource type="Texture2D" uid="uid://b23lh8ljgg0wp" path="res://assets/floor_2/border_purple.png" id="3_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://b0pgadmedgmii" path="res://assets/floor_2/brick_pattern_purple.png" id="4_fc0e3"]
+
+[node name="Game" type="Node2D" unique_id=2053109548]
+
+[node name="floor_1" type="Control" parent="." unique_id=471118978]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="border" type="TextureRect" parent="floor_1" unique_id=301586752]
+z_index = 1
+layout_mode = 0
+offset_top = 90.0
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("1_fc0e3")
+
+[node name="bricks_1" type="TextureRect" parent="floor_1" unique_id=1190970409]
+layout_mode = 0
+offset_top = 90.0
+offset_right = 80.0
+offset_bottom = 180.0
+texture = ExtResource("2_7jktm")
+
+[node name="bricks_2" type="TextureRect" parent="floor_1" unique_id=995142480]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 90.0
+offset_right = 160.0
+offset_bottom = 180.0
+texture = ExtResource("2_7jktm")
+
+[node name="bricks_3" type="TextureRect" parent="floor_1" unique_id=1681563778]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 90.0
+offset_right = 240.0
+offset_bottom = 180.0
+texture = ExtResource("2_7jktm")
+
+[node name="bricks_4" type="TextureRect" parent="floor_1" unique_id=156601729]
+layout_mode = 0
+offset_left = 240.0
+offset_top = 90.0
+offset_right = 320.0
+offset_bottom = 180.0
+texture = ExtResource("2_7jktm")
+
+[node name="orb" type="Sprite2D" parent="floor_1" unique_id=1228445746]
+z_index = 1
+position = Vector2(54, 135)
+texture = ExtResource("3_7jktm")
+
+[node name="floor_2" type="Control" parent="." unique_id=1436673272]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="border" type="TextureRect" parent="floor_2" unique_id=151277512]
+z_index = 1
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 90.0
+texture = ExtResource("3_fc0e3")
+
+[node name="bricks_1" type="TextureRect" parent="floor_2" unique_id=1596979530]
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 90.0
+texture = ExtResource("4_fc0e3")
+
+[node name="bricks_2" type="TextureRect" parent="floor_2" unique_id=1245385258]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 160.0
+offset_bottom = 90.0
+texture = ExtResource("4_fc0e3")
+
+[node name="bricks_3" type="TextureRect" parent="floor_2" unique_id=50154030]
+layout_mode = 0
+offset_left = 160.0
+offset_right = 240.0
+offset_bottom = 90.0
+texture = ExtResource("4_fc0e3")
+
+[node name="bricks_4" type="TextureRect" parent="floor_2" unique_id=1434605809]
+layout_mode = 0
+offset_left = 240.0
+offset_right = 320.0
+offset_bottom = 90.0
+texture = ExtResource("4_fc0e3")

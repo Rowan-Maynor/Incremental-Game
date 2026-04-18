@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b23lh8ljgg0wp" path="res://assets/floor_2/border_purple.png" id="3_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://b0pgadmedgmii" path="res://assets/floor_2/brick_pattern_purple.png" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://b7ku2se6f0iwg" path="res://assets/floor_1/mana_well.png" id="4_ryrav"]
+[ext_resource type="Texture2D" uid="uid://w685ulsavk8q" path="res://assets/floor_1/tome.png" id="5_eow3j"]
 
 [node name="Game" type="Node2D" unique_id=2053109548]
 
@@ -61,8 +62,12 @@ texture = ExtResource("3_7jktm")
 
 [node name="mana_well" type="Sprite2D" parent="floor_1" unique_id=600959075]
 z_index = 1
-position = Vector2(126, 165)
+position = Vector2(194, 165)
 texture = ExtResource("4_ryrav")
+
+[node name="tome" type="Sprite2D" parent="floor_1" unique_id=1569770888]
+position = Vector2(129, 160)
+texture = ExtResource("5_eow3j")
 
 [node name="floor_2" type="Control" parent="." unique_id=1436673272]
 layout_mode = 3

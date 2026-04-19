@@ -2,11 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://b7ku2se6f0iwg" path="res://assets/floor_1/mana_well.png" id="1_2a2ou"]
 [ext_resource type="Shader" uid="uid://dn8lxpa76nul7" path="res://shaders/locked.gdshader" id="1_7uqe0"]
+[ext_resource type="Script" uid="uid://cjrvlwn4ms0p5" path="res://scenes/floor_1/mana_well.gd" id="1_b4otg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4otg"]
 shader = ExtResource("1_7uqe0")
 
 [node name="ManaWell" type="Node2D" unique_id=1285765595]
+script = ExtResource("1_b4otg")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1978906053]
 material = SubResource("ShaderMaterial_b4otg")

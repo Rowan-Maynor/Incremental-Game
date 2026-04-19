@@ -5,7 +5,9 @@ var rune : Big = Big.new(0)
 
 #interactables
 @onready var orb : Node2D = $SubViewportContainer/SubViewport/floor_1/Orb
-@onready var stone: Node2D = $SubViewportContainer/SubViewport/floor_2/Stone
+@onready var stone : Node2D = $SubViewportContainer/SubViewport/floor_2/Stone
+@onready var mana_well : Node2D = $SubViewportContainer/SubViewport/floor_1/ManaWell
+@onready var tome : Node2D = $SubViewportContainer/SubViewport/floor_1/Tome
 
 #resource value lables
 @onready var mana_label : Label = $ui/resource_containers/mana_container/HBoxContainer/VBoxContainer/Label
@@ -15,8 +17,7 @@ var rune : Big = Big.new(0)
 
 func _ready() -> void:
 	set_big_properties()
-	orb.connect("gain_mana", gain_mana)
-	stone.connect("gain_rune", gain_rune)
+	connect_signals()
 
 func _process(_delta: float) -> void:
 	mana_label.text = mana.toAA()
@@ -30,10 +31,12 @@ func _input(_event: InputEvent) -> void:
 #src is necessary to help control spawn_label positioning
 func gain_mana(value, src):
 	mana = mana.plus(value)
+	curr_mana.emit(mana)
 	spawn_label("mana", value, src)
 
 func gain_rune(value, src):
 	rune = rune.plus(value)
+	curr_rune.emit(rune)
 	spawn_label("rune", value, src)
 
 #helper functions
@@ -60,3 +63,12 @@ func spawn_label(type : String, value : Big, src : String):
 
 func set_big_properties():
 	Big.setSmallDecimals(0)
+
+func connect_signals():
+	orb.connect("gain_mana", gain_mana)
+	stone.connect("gain_rune", gain_rune)
+	curr_mana.connect(tome.check_unlock)
+
+#signals
+signal curr_mana(value)
+signal curr_rune(value)

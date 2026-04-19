@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://by5ykh6bgsi0k"]
+
+[ext_resource type="Texture2D" uid="uid://cmipkij56bhke" path="res://assets/floor_2/tool_shed.png" id="1_tc0rk"]
+
+[node name="ToolShed" type="Node2D" unique_id=1804578945]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=525906812]
+texture = ExtResource("1_tc0rk")

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cxlp0lcjueuok"]
+
+[ext_resource type="Texture2D" uid="uid://b7ku2se6f0iwg" path="res://assets/floor_1/mana_well.png" id="1_2a2ou"]
+
+[node name="ManaWell" type="Node2D" unique_id=1285765595]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1978906053]
+texture = ExtResource("1_2a2ou")

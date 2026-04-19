@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://d0icarst6uahv"]
+
+[ext_resource type="Texture2D" uid="uid://b23lh8ljgg0wp" path="res://assets/floor_2/border_purple.png" id="1_lop72"]
+[ext_resource type="Texture2D" uid="uid://b0pgadmedgmii" path="res://assets/floor_2/brick_pattern_purple.png" id="2_3bg6c"]
+
+[node name="Bricks" type="Control" unique_id=1898532271]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="border" type="TextureRect" parent="." unique_id=1487447625]
+z_index = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_lop72")
+
+[node name="bricks_1" type="TextureRect" parent="." unique_id=1605204514]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_3bg6c")
+
+[node name="bricks_2" type="TextureRect" parent="." unique_id=889690528]
+layout_mode = 0
+offset_left = 80.0
+offset_right = 160.0
+offset_bottom = 90.0
+texture = ExtResource("2_3bg6c")
+
+[node name="bricks_3" type="TextureRect" parent="." unique_id=1068841325]
+layout_mode = 0
+offset_left = 160.0
+offset_right = 240.0
+offset_bottom = 90.0
+texture = ExtResource("2_3bg6c")
+
+[node name="bricks_4" type="TextureRect" parent="." unique_id=22190818]
+layout_mode = 0
+offset_left = 240.0
+offset_right = 320.0
+offset_bottom = 90.0
+texture = ExtResource("2_3bg6c")

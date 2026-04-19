@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://b7ku2se6f0iwg" path="res://assets/floor_1/mana_well.png" id="4_ryrav"]
 [ext_resource type="Texture2D" uid="uid://w685ulsavk8q" path="res://assets/floor_1/tome.png" id="5_eow3j"]
 [ext_resource type="Texture2D" uid="uid://b20hdxije0gwu" path="res://assets/floor_1/book_shelf.png" id="6_j5wjh"]
+[ext_resource type="Texture2D" uid="uid://cbnwr2f0iue2m" path="res://assets/floor_2/stone.png" id="9_hve3p"]
+[ext_resource type="Texture2D" uid="uid://cmipkij56bhke" path="res://assets/floor_2/tool_shed.png" id="10_iotsf"]
+[ext_resource type="Texture2D" uid="uid://bxu8bdj4h1ggx" path="res://assets/floor_2/portal.png" id="10_mfdv2"]
 
 [node name="Game" type="Node2D" unique_id=2053109548]
 
@@ -58,20 +61,20 @@ texture = ExtResource("2_7jktm")
 
 [node name="orb" type="Sprite2D" parent="floor_1" unique_id=1228445746]
 z_index = 1
-position = Vector2(54, 135)
+position = Vector2(40, 135)
 texture = ExtResource("3_7jktm")
 
 [node name="mana_well" type="Sprite2D" parent="floor_1" unique_id=600959075]
 z_index = 1
-position = Vector2(194, 165)
+position = Vector2(200, 165)
 texture = ExtResource("4_ryrav")
 
 [node name="tome" type="Sprite2D" parent="floor_1" unique_id=1569770888]
-position = Vector2(129, 160)
+position = Vector2(120, 160)
 texture = ExtResource("5_eow3j")
 
 [node name="book_shelf" type="Sprite2D" parent="floor_1" unique_id=931830577]
-position = Vector2(281, 130)
+position = Vector2(280, 130)
 texture = ExtResource("6_j5wjh")
 
 [node name="floor_2" type="Control" parent="." unique_id=1436673272]
@@ -109,7 +112,19 @@ texture = ExtResource("4_fc0e3")
 
 [node name="bricks_4" type="TextureRect" parent="floor_2" unique_id=1434605809]
 layout_mode = 0
-offset_left = 240.0
-offset_right = 320.0
+offset_left = 239.0
+offset_right = 319.0
 offset_bottom = 90.0
 texture = ExtResource("4_fc0e3")
+
+[node name="stone" type="Sprite2D" parent="floor_2" unique_id=127125514]
+position = Vector2(40, 70)
+texture = ExtResource("9_hve3p")
+
+[node name="tool_shed" type="Sprite2D" parent="floor_2" unique_id=1945007669]
+position = Vector2(120, 40)
+texture = ExtResource("10_iotsf")
+
+[node name="portal" type="Sprite2D" parent="floor_2" unique_id=1121343149]
+position = Vector2(280, 40)
+texture = ExtResource("10_mfdv2")

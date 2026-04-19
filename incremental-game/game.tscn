@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0pgadmedgmii" path="res://assets/floor_2/brick_pattern_purple.png" id="4_fc0e3"]
 [ext_resource type="Texture2D" uid="uid://b7ku2se6f0iwg" path="res://assets/floor_1/mana_well.png" id="4_ryrav"]
 [ext_resource type="Texture2D" uid="uid://w685ulsavk8q" path="res://assets/floor_1/tome.png" id="5_eow3j"]
+[ext_resource type="Texture2D" uid="uid://b20hdxije0gwu" path="res://assets/floor_1/book_shelf.png" id="6_j5wjh"]
 
 [node name="Game" type="Node2D" unique_id=2053109548]
 
@@ -68,6 +69,10 @@ texture = ExtResource("4_ryrav")
 [node name="tome" type="Sprite2D" parent="floor_1" unique_id=1569770888]
 position = Vector2(129, 160)
 texture = ExtResource("5_eow3j")
+
+[node name="book_shelf" type="Sprite2D" parent="floor_1" unique_id=931830577]
+position = Vector2(281, 130)
+texture = ExtResource("6_j5wjh")
 
 [node name="floor_2" type="Control" parent="." unique_id=1436673272]
 layout_mode = 3

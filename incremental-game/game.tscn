@@ -14,13 +14,23 @@
 
 [node name="Game" type="Node2D" unique_id=2053109548]
 
-[node name="floor_1" type="Control" parent="." unique_id=471118978]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1835603589]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(2, 2)
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1745401975]
+snap_2d_vertices_to_pixel = true
+canvas_item_default_texture_filter = 0
+size = Vector2i(320, 180)
+
+[node name="floor_1" type="Control" parent="SubViewportContainer/SubViewport" unique_id=471118978]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="border" type="TextureRect" parent="floor_1" unique_id=301586752]
+[node name="border" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_1" unique_id=301586752]
 z_index = 2
 layout_mode = 0
 offset_top = 90.0
@@ -28,14 +38,14 @@ offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("1_fc0e3")
 
-[node name="bricks_1" type="TextureRect" parent="floor_1" unique_id=1190970409]
+[node name="bricks_1" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1190970409]
 layout_mode = 0
 offset_top = 90.0
 offset_right = 80.0
 offset_bottom = 180.0
 texture = ExtResource("2_7jktm")
 
-[node name="bricks_2" type="TextureRect" parent="floor_1" unique_id=995142480]
+[node name="bricks_2" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_1" unique_id=995142480]
 layout_mode = 0
 offset_left = 80.0
 offset_top = 90.0
@@ -43,7 +53,7 @@ offset_right = 160.0
 offset_bottom = 180.0
 texture = ExtResource("2_7jktm")
 
-[node name="bricks_3" type="TextureRect" parent="floor_1" unique_id=1681563778]
+[node name="bricks_3" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1681563778]
 layout_mode = 0
 offset_left = 160.0
 offset_top = 90.0
@@ -51,7 +61,7 @@ offset_right = 240.0
 offset_bottom = 180.0
 texture = ExtResource("2_7jktm")
 
-[node name="bricks_4" type="TextureRect" parent="floor_1" unique_id=156601729]
+[node name="bricks_4" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_1" unique_id=156601729]
 layout_mode = 0
 offset_left = 240.0
 offset_top = 90.0
@@ -59,72 +69,72 @@ offset_right = 320.0
 offset_bottom = 180.0
 texture = ExtResource("2_7jktm")
 
-[node name="orb" type="Sprite2D" parent="floor_1" unique_id=1228445746]
+[node name="orb" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1228445746]
 z_index = 1
 position = Vector2(40, 135)
 texture = ExtResource("3_7jktm")
 
-[node name="mana_well" type="Sprite2D" parent="floor_1" unique_id=600959075]
+[node name="mana_well" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_1" unique_id=600959075]
 z_index = 1
 position = Vector2(200, 165)
 texture = ExtResource("4_ryrav")
 
-[node name="tome" type="Sprite2D" parent="floor_1" unique_id=1569770888]
+[node name="tome" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1569770888]
 position = Vector2(120, 160)
 texture = ExtResource("5_eow3j")
 
-[node name="book_shelf" type="Sprite2D" parent="floor_1" unique_id=931830577]
+[node name="book_shelf" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_1" unique_id=931830577]
 position = Vector2(280, 130)
 texture = ExtResource("6_j5wjh")
 
-[node name="floor_2" type="Control" parent="." unique_id=1436673272]
+[node name="floor_2" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1436673272]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="border" type="TextureRect" parent="floor_2" unique_id=151277512]
+[node name="border" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_2" unique_id=151277512]
 z_index = 1
 layout_mode = 0
 offset_right = 320.0
 offset_bottom = 90.0
 texture = ExtResource("3_fc0e3")
 
-[node name="bricks_1" type="TextureRect" parent="floor_2" unique_id=1596979530]
+[node name="bricks_1" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1596979530]
 layout_mode = 0
 offset_right = 80.0
 offset_bottom = 90.0
 texture = ExtResource("4_fc0e3")
 
-[node name="bricks_2" type="TextureRect" parent="floor_2" unique_id=1245385258]
+[node name="bricks_2" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1245385258]
 layout_mode = 0
 offset_left = 80.0
 offset_right = 160.0
 offset_bottom = 90.0
 texture = ExtResource("4_fc0e3")
 
-[node name="bricks_3" type="TextureRect" parent="floor_2" unique_id=50154030]
+[node name="bricks_3" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_2" unique_id=50154030]
 layout_mode = 0
 offset_left = 160.0
 offset_right = 240.0
 offset_bottom = 90.0
 texture = ExtResource("4_fc0e3")
 
-[node name="bricks_4" type="TextureRect" parent="floor_2" unique_id=1434605809]
+[node name="bricks_4" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1434605809]
 layout_mode = 0
 offset_left = 239.0
 offset_right = 319.0
 offset_bottom = 90.0
 texture = ExtResource("4_fc0e3")
 
-[node name="stone" type="Sprite2D" parent="floor_2" unique_id=127125514]
+[node name="stone" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_2" unique_id=127125514]
 position = Vector2(40, 70)
 texture = ExtResource("9_hve3p")
 
-[node name="tool_shed" type="Sprite2D" parent="floor_2" unique_id=1945007669]
+[node name="tool_shed" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1945007669]
 position = Vector2(120, 40)
 texture = ExtResource("10_iotsf")
 
-[node name="portal" type="Sprite2D" parent="floor_2" unique_id=1121343149]
+[node name="portal" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1121343149]
 position = Vector2(280, 40)
 texture = ExtResource("10_mfdv2")

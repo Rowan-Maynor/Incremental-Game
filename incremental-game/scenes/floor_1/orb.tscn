@@ -1,8 +1,19 @@
 [gd_scene format=3 uid="uid://bw7tyjhuuhimh"]
 
 [ext_resource type="Texture2D" uid="uid://yarmrjq5muem" path="res://assets/floor_1/orb.png" id="1_1ti42"]
+[ext_resource type="Script" uid="uid://ba36tf5kgoml1" path="res://scenes/floor_1/orb.gd" id="1_77kxr"]
 
 [node name="Orb" type="Node2D" unique_id=1197367504]
+script = ExtResource("1_77kxr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=350396730]
 texture = ExtResource("1_1ti42")
+
+[node name="Button" type="Button" parent="." unique_id=348756423]
+offset_left = -30.0
+offset_top = -14.0
+offset_right = 30.0
+offset_bottom = 41.0
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

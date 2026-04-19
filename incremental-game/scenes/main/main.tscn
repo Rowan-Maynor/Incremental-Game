@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://v0uwhrnvy160"]
 
 [ext_resource type="PackedScene" uid="uid://baflty0qaltsy" path="res://scenes/floor_1/bricks_1.tscn" id="1_b1x3f"]
+[ext_resource type="Script" uid="uid://b6mljbabusyy4" path="res://scenes/main/main.gd" id="1_raeie"]
 [ext_resource type="PackedScene" uid="uid://bkq7m86si2ckg" path="res://scenes/floor_1/tome.tscn" id="3_a8run"]
 [ext_resource type="PackedScene" uid="uid://cxlp0lcjueuok" path="res://scenes/floor_1/mana_well.tscn" id="4_ouso4"]
 [ext_resource type="PackedScene" uid="uid://bu738jw5tt6x8" path="res://scenes/floor_1/book_shelf.tscn" id="5_blune"]
@@ -30,6 +31,7 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
 [node name="main" type="Node2D" unique_id=2053109548]
+script = ExtResource("1_raeie")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1835603589]
 offset_right = 40.0
@@ -143,3 +145,5 @@ horizontal_alignment = 2
 
 [node name="spacing" type="Control" parent="ui/resource_containers/rune_container/HBoxContainer/VBoxContainer" unique_id=657509813]
 layout_mode = 2
+
+[node name="popup_labels" type="CanvasLayer" parent="." unique_id=1965218954]

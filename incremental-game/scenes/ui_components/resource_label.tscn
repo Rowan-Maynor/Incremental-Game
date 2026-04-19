@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cbpd4lnbfeuca"]
+
+[ext_resource type="Theme" uid="uid://b211ssscuusjr" path="res://main_theme.tres" id="1_2qayd"]
+[ext_resource type="Script" uid="uid://dctutyhkbkwj4" path="res://scenes/ui_components/resource_label.gd" id="1_7eh8f"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7eh8f"]
+load_path = "res://.godot/imported/mana_icon.png-102dc9c04c82d7a9a1dcb671f5b1b0f6.ctex"
+
+[node name="ResourceLabel" type="Control" unique_id=1528422321]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7eh8f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=357319069]
+layout_mode = 0
+offset_left = -14.0
+offset_top = -15.0
+offset_right = 38.0
+offset_bottom = 15.0
+mouse_filter = 2
+
+[node name="icon" type="TextureRect" parent="HBoxContainer" unique_id=1230320978]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("CompressedTexture2D_7eh8f")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=635152965]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1112550553]
+layout_mode = 2
+theme = ExtResource("1_2qayd")
+text = "1000"
+horizontal_alignment = 2
+
+[node name="spacing" type="Control" parent="HBoxContainer/VBoxContainer" unique_id=1246739127]
+layout_mode = 2
+mouse_filter = 2

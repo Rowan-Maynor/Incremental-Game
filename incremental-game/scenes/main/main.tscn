@@ -1,17 +1,14 @@
 [gd_scene format=3 uid="uid://v0uwhrnvy160"]
 
-[ext_resource type="Texture2D" uid="uid://bs4g8661uwhb8" path="res://assets/floor_1/border_blue.png" id="1_ouso4"]
-[ext_resource type="Texture2D" uid="uid://cc7wetqhr08qv" path="res://assets/floor_1/brick_pattern_blue.png" id="2_blune"]
-[ext_resource type="Texture2D" uid="uid://yarmrjq5muem" path="res://assets/floor_1/orb.png" id="3_th5th"]
-[ext_resource type="Texture2D" uid="uid://b7ku2se6f0iwg" path="res://assets/floor_1/mana_well.png" id="4_7smn1"]
-[ext_resource type="Texture2D" uid="uid://w685ulsavk8q" path="res://assets/floor_1/tome.png" id="5_raeie"]
-[ext_resource type="Texture2D" uid="uid://b20hdxije0gwu" path="res://assets/floor_1/book_shelf.png" id="6_hxu8e"]
+[ext_resource type="PackedScene" uid="uid://baflty0qaltsy" path="res://scenes/floor_1/bricks_1.tscn" id="1_b1x3f"]
+[ext_resource type="PackedScene" uid="uid://bkq7m86si2ckg" path="res://scenes/floor_1/tome.tscn" id="3_a8run"]
+[ext_resource type="PackedScene" uid="uid://cxlp0lcjueuok" path="res://scenes/floor_1/mana_well.tscn" id="4_ouso4"]
+[ext_resource type="PackedScene" uid="uid://bu738jw5tt6x8" path="res://scenes/floor_1/book_shelf.tscn" id="5_blune"]
+[ext_resource type="PackedScene" uid="uid://d0icarst6uahv" path="res://scenes/floor_2/bricks_2.tscn" id="6_th5th"]
+[ext_resource type="PackedScene" uid="uid://d24qsww5vkin8" path="res://scenes/floor_2/stone.tscn" id="7_7smn1"]
 [ext_resource type="PackedScene" uid="uid://bw7tyjhuuhimh" path="res://scenes/floor_1/orb.tscn" id="7_blune"]
-[ext_resource type="Texture2D" uid="uid://b23lh8ljgg0wp" path="res://assets/floor_2/border_purple.png" id="7_nvumn"]
-[ext_resource type="Texture2D" uid="uid://b0pgadmedgmii" path="res://assets/floor_2/brick_pattern_purple.png" id="8_ou6is"]
-[ext_resource type="Texture2D" uid="uid://cbnwr2f0iue2m" path="res://assets/floor_2/stone.png" id="9_necax"]
-[ext_resource type="Texture2D" uid="uid://cmipkij56bhke" path="res://assets/floor_2/tool_shed.png" id="10_r4lks"]
-[ext_resource type="Texture2D" uid="uid://bxu8bdj4h1ggx" path="res://assets/floor_2/portal.png" id="11_pg34l"]
+[ext_resource type="PackedScene" uid="uid://by5ykh6bgsi0k" path="res://scenes/floor_2/tool_shed.tscn" id="8_raeie"]
+[ext_resource type="PackedScene" uid="uid://cqvr58jmdlvo7" path="res://scenes/floor_2/portal.tscn" id="9_hxu8e"]
 
 [node name="main" type="Node2D" unique_id=2053109548]
 
@@ -33,64 +30,26 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="border" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_1" unique_id=301586752]
-z_index = 2
-layout_mode = 0
+[node name="Bricks" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1898532271 instance=ExtResource("1_b1x3f")]
+layout_mode = 1
 offset_top = 90.0
-offset_right = 320.0
-offset_bottom = 180.0
-texture = ExtResource("1_ouso4")
-
-[node name="bricks_1" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1190970409]
-layout_mode = 0
-offset_top = 90.0
-offset_right = 80.0
-offset_bottom = 180.0
-texture = ExtResource("2_blune")
-
-[node name="bricks_2" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_1" unique_id=995142480]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 90.0
-offset_right = 160.0
-offset_bottom = 180.0
-texture = ExtResource("2_blune")
-
-[node name="bricks_3" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1681563778]
-layout_mode = 0
-offset_left = 160.0
-offset_top = 90.0
-offset_right = 240.0
-offset_bottom = 180.0
-texture = ExtResource("2_blune")
-
-[node name="bricks_4" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_1" unique_id=156601729]
-layout_mode = 0
-offset_left = 240.0
-offset_top = 90.0
-offset_right = 320.0
-offset_bottom = 180.0
-texture = ExtResource("2_blune")
-
-[node name="orb" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1228445746]
-z_index = 1
-position = Vector2(40, 135)
-texture = ExtResource("3_th5th")
-
-[node name="mana_well" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_1" unique_id=600959075]
-z_index = 1
-position = Vector2(200, 165)
-texture = ExtResource("4_7smn1")
-
-[node name="tome" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1569770888]
-position = Vector2(120, 159)
-texture = ExtResource("5_raeie")
-
-[node name="book_shelf" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_1" unique_id=931830577]
-position = Vector2(280, 130)
-texture = ExtResource("6_hxu8e")
+offset_bottom = 90.0
 
 [node name="Orb" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1197367504 instance=ExtResource("7_blune")]
+z_index = 1
+position = Vector2(40, 135)
+
+[node name="Tome" parent="SubViewportContainer/SubViewport/floor_1" unique_id=192977574 instance=ExtResource("3_a8run")]
+z_index = 1
+position = Vector2(120, 159)
+
+[node name="ManaWell" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1285765595 instance=ExtResource("4_ouso4")]
+z_index = 1
+position = Vector2(200, 165)
+
+[node name="BookShelf" parent="SubViewportContainer/SubViewport/floor_1" unique_id=619896228 instance=ExtResource("5_blune")]
+z_index = 1
+position = Vector2(280, 130)
 
 [node name="floor_2" type="Control" parent="SubViewportContainer/SubViewport" unique_id=1436673272]
 layout_mode = 3
@@ -98,48 +57,14 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="border" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_2" unique_id=151277512]
-z_index = 1
-layout_mode = 0
-offset_right = 320.0
-offset_bottom = 90.0
-texture = ExtResource("7_nvumn")
+[node name="Bricks" parent="SubViewportContainer/SubViewport/floor_2" unique_id=450921996 instance=ExtResource("6_th5th")]
+layout_mode = 1
 
-[node name="bricks_1" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1596979530]
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 90.0
-texture = ExtResource("8_ou6is")
-
-[node name="bricks_2" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1245385258]
-layout_mode = 0
-offset_left = 80.0
-offset_right = 160.0
-offset_bottom = 90.0
-texture = ExtResource("8_ou6is")
-
-[node name="bricks_3" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_2" unique_id=50154030]
-layout_mode = 0
-offset_left = 160.0
-offset_right = 240.0
-offset_bottom = 90.0
-texture = ExtResource("8_ou6is")
-
-[node name="bricks_4" type="TextureRect" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1434605809]
-layout_mode = 0
-offset_left = 239.0
-offset_right = 319.0
-offset_bottom = 90.0
-texture = ExtResource("8_ou6is")
-
-[node name="stone" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_2" unique_id=127125514]
+[node name="Stone" parent="SubViewportContainer/SubViewport/floor_2" unique_id=2141574942 instance=ExtResource("7_7smn1")]
 position = Vector2(40, 70)
-texture = ExtResource("9_necax")
 
-[node name="tool_shed" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1945007669]
+[node name="ToolShed" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1804578945 instance=ExtResource("8_raeie")]
 position = Vector2(120, 40)
-texture = ExtResource("10_r4lks")
 
-[node name="portal" type="Sprite2D" parent="SubViewportContainer/SubViewport/floor_2" unique_id=1121343149]
+[node name="Portal" parent="SubViewportContainer/SubViewport/floor_2" unique_id=567649020 instance=ExtResource("9_hxu8e")]
 position = Vector2(280, 40)
-texture = ExtResource("11_pg34l")

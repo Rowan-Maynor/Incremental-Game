@@ -30,12 +30,12 @@ func _input(_event: InputEvent) -> void:
 #resource math functions
 #src is necessary to help control spawn_label positioning
 func gain_mana(value, src):
-	mana = mana.plus(value)
+	mana.plusEquals(value)
 	curr_mana.emit(mana)
 	spawn_label("mana", value, src)
 
 func gain_rune(value, src):
-	rune = rune.plus(value)
+	rune.plusEquals(value)
 	curr_rune.emit(rune)
 	spawn_label("rune", value, src)
 

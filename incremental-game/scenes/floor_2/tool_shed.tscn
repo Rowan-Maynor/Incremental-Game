@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://by5ykh6bgsi0k"]
 
+[ext_resource type="Shader" uid="uid://dn8lxpa76nul7" path="res://shaders/locked.gdshader" id="1_j1klm"]
 [ext_resource type="Texture2D" uid="uid://cmipkij56bhke" path="res://assets/floor_2/tool_shed.png" id="1_tc0rk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eq04p"]
+shader = ExtResource("1_j1klm")
 
 [node name="ToolShed" type="Node2D" unique_id=1804578945]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=525906812]
+material = SubResource("ShaderMaterial_eq04p")
 texture = ExtResource("1_tc0rk")

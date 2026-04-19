@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://bu738jw5tt6x8"]
 
 [ext_resource type="Texture2D" uid="uid://b20hdxije0gwu" path="res://assets/floor_1/book_shelf.png" id="1_0oj21"]
+[ext_resource type="Shader" uid="uid://dn8lxpa76nul7" path="res://shaders/locked.gdshader" id="1_1388s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j04h8"]
+shader = ExtResource("1_1388s")
 
 [node name="BookShelf" type="Node2D" unique_id=619896228]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1653743997]
+material = SubResource("ShaderMaterial_j04h8")
 texture = ExtResource("1_0oj21")

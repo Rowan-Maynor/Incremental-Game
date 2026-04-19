@@ -2,11 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://cbnwr2f0iue2m" path="res://assets/floor_2/stone.png" id="1_n0c2g"]
 [ext_resource type="Script" uid="uid://ddnnawskrycfv" path="res://scenes/floor_2/stone.gd" id="1_v73se"]
+[ext_resource type="Shader" uid="uid://dn8lxpa76nul7" path="res://shaders/locked.gdshader" id="2_ei513"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_spowr"]
+shader = ExtResource("2_ei513")
 
 [node name="Stone" type="Node2D" unique_id=2141574942]
 script = ExtResource("1_v73se")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1378020019]
+material = SubResource("ShaderMaterial_spowr")
 texture = ExtResource("1_n0c2g")
 
 [node name="Button" type="Button" parent="." unique_id=272943551]

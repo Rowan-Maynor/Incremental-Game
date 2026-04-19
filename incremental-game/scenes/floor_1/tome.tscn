@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://bkq7m86si2ckg"]
 
 [ext_resource type="Texture2D" uid="uid://w685ulsavk8q" path="res://assets/floor_1/tome.png" id="1_dt3ls"]
+[ext_resource type="Shader" uid="uid://dn8lxpa76nul7" path="res://shaders/locked.gdshader" id="1_mn0xt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0reia"]
+shader = ExtResource("1_mn0xt")
 
 [node name="Tome" type="Node2D" unique_id=192977574]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1716539495]
+material = SubResource("ShaderMaterial_0reia")
 texture = ExtResource("1_dt3ls")

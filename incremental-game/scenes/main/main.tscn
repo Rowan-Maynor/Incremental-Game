@@ -12,9 +12,18 @@
 [ext_resource type="Texture2D" uid="uid://cpyh8w0rmpcbe" path="res://assets/ui/mana_icon.png" id="10_a8run"]
 [ext_resource type="Texture2D" uid="uid://dw5ae1yjrhc4c" path="res://assets/ui/blue_nine_patch.png" id="10_ouso4"]
 [ext_resource type="Theme" uid="uid://b211ssscuusjr" path="res://main_theme.tres" id="12_blune"]
+[ext_resource type="Texture2D" uid="uid://cj3vkkuussbah" path="res://assets/ui/purple_nine_patch.png" id="13_th5th"]
+[ext_resource type="Texture2D" uid="uid://cdu5wxmkt65s6" path="res://assets/ui/rune_icon.png" id="14_7smn1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_blune"]
 texture = ExtResource("10_ouso4")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7smn1"]
+texture = ExtResource("13_th5th")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
@@ -81,26 +90,56 @@ position = Vector2(280, 40)
 
 [node name="ui" type="CanvasLayer" parent="." unique_id=194757932]
 
-[node name="PanelContainer" type="PanelContainer" parent="ui" unique_id=24182337]
-offset_left = 51.0
+[node name="resource_containers" type="HBoxContainer" parent="ui" unique_id=1578442448]
+offset_left = 16.0
 offset_top = -5.0
-offset_right = 117.0
+offset_right = 96.0
 offset_bottom = 35.0
+
+[node name="mana_container" type="PanelContainer" parent="ui/resource_containers" unique_id=24182337]
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_blune")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ui/PanelContainer" unique_id=956048219]
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/resource_containers/mana_container" unique_id=956048219]
 layout_mode = 2
 
-[node name="mana_icon" type="TextureRect" parent="ui/PanelContainer/HBoxContainer" unique_id=1618311970]
+[node name="mana_icon" type="TextureRect" parent="ui/resource_containers/mana_container/HBoxContainer" unique_id=1618311970]
 layout_mode = 2
 texture = ExtResource("10_a8run")
 stretch_mode = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ui/PanelContainer/HBoxContainer" unique_id=968865457]
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/resource_containers/mana_container/HBoxContainer" unique_id=968865457]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="ui/PanelContainer/HBoxContainer/VBoxContainer" unique_id=114191069]
+[node name="Label" type="Label" parent="ui/resource_containers/mana_container/HBoxContainer/VBoxContainer" unique_id=114191069]
 layout_mode = 2
 theme = ExtResource("12_blune")
-text = "1.23k"
+text = "1000"
 horizontal_alignment = 2
+
+[node name="spacing" type="Control" parent="ui/resource_containers/mana_container/HBoxContainer/VBoxContainer" unique_id=1174567288]
+layout_mode = 2
+
+[node name="rune_container" type="PanelContainer" parent="ui/resource_containers" unique_id=1569711892]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_7smn1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui/resource_containers/rune_container" unique_id=141410937]
+layout_mode = 2
+
+[node name="rune_icon" type="TextureRect" parent="ui/resource_containers/rune_container/HBoxContainer" unique_id=31855]
+layout_mode = 2
+texture = ExtResource("14_7smn1")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/resource_containers/rune_container/HBoxContainer" unique_id=139584426]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ui/resource_containers/rune_container/HBoxContainer/VBoxContainer" unique_id=1236932964]
+layout_mode = 2
+theme = ExtResource("12_blune")
+text = "1000"
+horizontal_alignment = 2
+
+[node name="spacing" type="Control" parent="ui/resource_containers/rune_container/HBoxContainer/VBoxContainer" unique_id=657509813]
+layout_mode = 2

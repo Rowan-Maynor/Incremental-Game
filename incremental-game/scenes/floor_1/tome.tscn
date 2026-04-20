@@ -13,3 +13,13 @@ script = ExtResource("1_0reia")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1716539495]
 material = SubResource("ShaderMaterial_0reia")
 texture = ExtResource("1_dt3ls")
+
+[node name="Button" type="Button" parent="." unique_id=123477573]
+offset_left = -27.0
+offset_top = -16.0
+offset_right = 27.0
+offset_bottom = 17.0
+flat = true
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

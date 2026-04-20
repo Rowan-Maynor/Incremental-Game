@@ -52,6 +52,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Bricks" parent="SubViewportContainer/SubViewport/floor_1" unique_id=1898532271 instance=ExtResource("1_b1x3f")]
+z_index = 1
 layout_mode = 1
 offset_top = 90.0
 offset_bottom = 90.0

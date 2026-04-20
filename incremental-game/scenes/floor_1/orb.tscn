@@ -3,10 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://yarmrjq5muem" path="res://assets/floor_1/orb.png" id="1_1ti42"]
 [ext_resource type="Script" uid="uid://ba36tf5kgoml1" path="res://scenes/floor_1/orb.gd" id="1_77kxr"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_77kxr"]
+
 [node name="Orb" type="Node2D" unique_id=1197367504]
 script = ExtResource("1_77kxr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=350396730]
+material = SubResource("ShaderMaterial_77kxr")
 texture = ExtResource("1_1ti42")
 
 [node name="Button" type="Button" parent="." unique_id=348756423]
@@ -16,4 +19,6 @@ offset_right = 30.0
 offset_bottom = 41.0
 flat = true
 
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

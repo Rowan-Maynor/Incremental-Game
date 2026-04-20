@@ -9,6 +9,9 @@ var rune : Big = Big.new(0)
 @onready var mana_well : Node2D = $SubViewportContainer/SubViewport/floor_1/ManaWell
 @onready var tome : Node2D = $SubViewportContainer/SubViewport/floor_1/Tome
 
+#floor_bricks
+@onready var floor_2_bricks : Control = $SubViewportContainer/SubViewport/floor_2/Bricks
+
 #resource value lables
 @onready var mana_label : Label = $ui/resource_containers/mana_container/HBoxContainer/VBoxContainer/Label
 @onready var rune_label : Label = $ui/resource_containers/rune_container/HBoxContainer/VBoxContainer/Label
@@ -64,11 +67,27 @@ func spawn_label(type : String, value : Big, src : String):
 func set_big_properties():
 	Big.setSmallDecimals(0)
 
+#signal functions
 func connect_signals():
+	#orb signals
 	orb.connect("gain_mana", gain_mana)
-	stone.connect("gain_rune", gain_rune)
+	
+	#tome signals
 	curr_mana.connect(tome.check_unlock)
+	tome.tome_unlocked.connect(tome_unlocked)
+	
+	#stone signals
+	stone.connect("gain_rune", gain_rune)
 	curr_mana.connect(stone.check_unlock)
+	stone.stone_unlocked.connect(stone_unlocked)
+	stone.unlock_floor.connect(floor_2_bricks.unlock_floor)
+
+func tome_unlocked():
+	curr_mana.disconnect(tome.check_unlock)
+
+func stone_unlocked():
+	curr_mana.disconnect(stone.check_unlock)
+	print(curr_mana.get_connections())
 
 #signals
 signal curr_mana(value)

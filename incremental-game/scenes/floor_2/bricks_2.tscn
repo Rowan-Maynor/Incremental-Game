@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://dn8lxpa76nul7" path="res://shaders/locked.gdshader" id="1_3bg6c"]
 [ext_resource type="Texture2D" uid="uid://b23lh8ljgg0wp" path="res://assets/floor_2/border_purple.png" id="1_lop72"]
 [ext_resource type="Texture2D" uid="uid://b0pgadmedgmii" path="res://assets/floor_2/brick_pattern_purple.png" id="2_3bg6c"]
+[ext_resource type="Script" uid="uid://csvqix7hoi1i5" path="res://scenes/floor_2/bricks_2.gd" id="2_cue2c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cue2c"]
 shader = ExtResource("1_3bg6c")
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("2_cue2c")
 
 [node name="border" type="TextureRect" parent="." unique_id=1487447625]
 z_index = 1

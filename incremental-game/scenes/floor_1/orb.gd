@@ -10,12 +10,10 @@ func _on_button_pressed() -> void:
 
 signal gain_mana(value, src)
 
-
 func _on_button_mouse_entered() -> void:
 	if $Sprite2D.material.shader == null:
 		var shader : Shader = load("res://shaders/outline.gdshader")
 		$Sprite2D.material.shader = shader
-
 
 func _on_button_mouse_exited() -> void:
 	if !locked and $Sprite2D.material.shader != null:

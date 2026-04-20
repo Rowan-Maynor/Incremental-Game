@@ -3,9 +3,20 @@
 [ext_resource type="Script" uid="uid://b1hjthvf4wmmg" path="res://scenes/floor_1/tome.gd" id="1_0reia"]
 [ext_resource type="Texture2D" uid="uid://w685ulsavk8q" path="res://assets/floor_1/tome.png" id="1_dt3ls"]
 [ext_resource type="Shader" uid="uid://dn8lxpa76nul7" path="res://shaders/locked.gdshader" id="1_mn0xt"]
+[ext_resource type="Texture2D" uid="uid://cp0sctb2oxnbp" path="res://assets/ui/blue_nine_patch_empty.png" id="4_0lb13"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0reia"]
 shader = ExtResource("1_mn0xt")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eujlx"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dcgjm"]
+bg_color = Color(0.0627451, 0.3882353, 0.61960787, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Tome" type="Node2D" unique_id=192977574]
 script = ExtResource("1_0reia")
@@ -20,6 +31,32 @@ offset_top = -16.0
 offset_right = 27.0
 offset_bottom = 17.0
 flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=29382884]
+visible = false
+z_index = 1
+offset_left = -25.0
+offset_top = -29.0
+offset_right = 25.0
+offset_bottom = -19.0
+texture = ExtResource("4_0lb13")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="NinePatchRect" unique_id=465427347]
+z_index = -1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 9.0
+offset_right = 10.0
+offset_bottom = 55.0
+rotation = 4.712389
+theme_override_styles/background = SubResource("StyleBoxFlat_eujlx")
+theme_override_styles/fill = SubResource("StyleBoxFlat_dcgjm")
+fill_mode = 2
+show_percentage = false
 
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]

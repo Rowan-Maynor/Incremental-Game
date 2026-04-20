@@ -17,6 +17,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+anti_aliasing = false
 
 [node name="Tome" type="Node2D" unique_id=192977574]
 script = ExtResource("1_0reia")

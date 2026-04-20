@@ -68,6 +68,7 @@ func connect_signals():
 	orb.connect("gain_mana", gain_mana)
 	stone.connect("gain_rune", gain_rune)
 	curr_mana.connect(tome.check_unlock)
+	curr_mana.connect(stone.check_unlock)
 
 #signals
 signal curr_mana(value)

@@ -17,9 +17,12 @@ var rune : Big = Big.new(0)
 @onready var rune_label : Label = $ui/resource_containers/rune_container/HBoxContainer/VBoxContainer/Label
 @onready var popup_labels: CanvasLayer = $popup_labels
 
-#permanant_unlocks
-var unlocks : Dictionary = {
-	"rune" : false
+#save properties
+#must increment when any fields are added/removed from save data
+var latest_save_version: int = 1
+var save_data : Dictionary = {
+	"version" : 0,
+	"seen_rune" : false,
 }
 
 func _ready() -> void:
@@ -75,18 +78,28 @@ func set_big_properties():
 
 func save_game():
 	var save_file = FileAccess.open("user://savegame.json", FileAccess.WRITE)
-	save_file.store_var(unlocks.duplicate())
+	save_file.store_var(save_data.duplicate())
 	save_file.close()
 
 func load_game():
 	var save_file = FileAccess.open("user://savegame.json", FileAccess.READ)
 	var data = save_file.get_var()
-	unlocks = data.duplicate()
+	if data["version"] != latest_save_version:
+		update_save(data)
+		save_game()
+	else:
+		save_data = data.duplicate()
 	save_file.close()
+
+func update_save(data):
+	for entry in data:
+		if save_data.has(entry):
+			save_data[entry] = data[entry]
+	save_data["version"] = latest_save_version
 
 #unlock functions
 func handle_unlocks():
-	if unlocks["rune"]:
+	if save_data["seen_rune"]:
 		make_rune_container_visible()
 
 func make_rune_container_visible():
@@ -112,8 +125,8 @@ func tome_unlocked():
 	curr_mana.disconnect(tome.check_unlock)
 
 func stone_unlocked():
-	if not unlocks["rune"]:
-		unlocks["rune"] = true
+	if not save_data["seen_rune"]:
+		save_data["seen_rune"] = true
 		save_game()
 		make_rune_container_visible()
 	curr_mana.disconnect(stone.check_unlock)

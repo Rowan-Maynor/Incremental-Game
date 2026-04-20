@@ -87,7 +87,6 @@ func tome_unlocked():
 
 func stone_unlocked():
 	curr_mana.disconnect(stone.check_unlock)
-	print(curr_mana.get_connections())
 
 #signals
 signal curr_mana(value)

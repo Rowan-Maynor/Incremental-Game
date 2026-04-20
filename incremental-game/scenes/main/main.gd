@@ -15,12 +15,18 @@ var rune : Big = Big.new(0)
 #resource value lables
 @onready var mana_label : Label = $ui/resource_containers/mana_container/HBoxContainer/VBoxContainer/Label
 @onready var rune_label : Label = $ui/resource_containers/rune_container/HBoxContainer/VBoxContainer/Label
-
 @onready var popup_labels: CanvasLayer = $popup_labels
 
+#permanant_unlocks
+var unlocks : Dictionary = {
+	"rune" : false
+}
+
 func _ready() -> void:
+	load_game()
 	set_big_properties()
 	connect_signals()
+	handle_unlocks()
 
 func _process(_delta: float) -> void:
 	mana_label.text = mana.toAA()
@@ -67,6 +73,26 @@ func spawn_label(type : String, value : Big, src : String):
 func set_big_properties():
 	Big.setSmallDecimals(0)
 
+func save_game():
+	var save_file = FileAccess.open("user://savegame.json", FileAccess.WRITE)
+	save_file.store_var(unlocks.duplicate())
+	save_file.close()
+
+func load_game():
+	var save_file = FileAccess.open("user://savegame.json", FileAccess.READ)
+	var data = save_file.get_var()
+	unlocks = data.duplicate()
+	save_file.close()
+
+#unlock functions
+func handle_unlocks():
+	if unlocks["rune"]:
+		make_rune_container_visible()
+
+func make_rune_container_visible():
+	$ui/resource_containers/rune_container.visible = true
+	
+
 #signal functions
 func connect_signals():
 	#orb signals
@@ -86,6 +112,10 @@ func tome_unlocked():
 	curr_mana.disconnect(tome.check_unlock)
 
 func stone_unlocked():
+	if not unlocks["rune"]:
+		unlocks["rune"] = true
+		save_game()
+		make_rune_container_visible()
 	curr_mana.disconnect(stone.check_unlock)
 
 #signals

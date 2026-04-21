@@ -120,8 +120,8 @@ func connect_signals():
 	#stone signals
 	stone.connect("gain_rune", gain_rune)
 	curr_mana.connect(stone.check_unlock)
+	curr_mana.connect(floor_2_bricks.check_unlock)
 	stone.stone_unlocked.connect(stone_unlocked)
-	stone.unlock_floor.connect(floor_2_bricks.unlock_floor)
 
 func tome_unlocked():
 	curr_mana.disconnect(tome.check_unlock)

@@ -14,10 +14,6 @@ func check_unlock(value):
 		locked = false
 		unlock_floor.emit()
 		stone_unlocked.emit()
-		
-		#remove the connection so im not calling excessive functions
-		var connections = unlock_floor.get_connections()
-		unlock_floor.disconnect(connections[0]["callable"])
 
 func _on_button_mouse_entered() -> void:
 	if $Sprite2D.material.shader == null:

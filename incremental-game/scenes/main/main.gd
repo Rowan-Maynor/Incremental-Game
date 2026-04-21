@@ -140,6 +140,7 @@ func connect_signals():
 	tome_upgrade_panel.orb_click_base_increase.connect(orb.increase_base)
 	curr_mana.connect(tome_upgrade_panel.check_orb_click_base_cost)
 	tome_upgrade_panel.spend_mana.connect(spend_mana)
+	tome_upgrade_panel.orb_click_base_maxed.connect(disconnect_orb_click_base)
 	
 	#mana well signals
 	curr_mana.connect(mana_well.check_unlock)
@@ -172,6 +173,9 @@ func stone_unlocked():
 
 func disconnect_well_rate():
 	curr_mana.disconnect(well_upgrade_panel.check_well_rate_cost)
+
+func disconnect_orb_click_base():
+	curr_mana.disconnect(tome_upgrade_panel.check_orb_click_base_cost)
 
 #panel functions
 func open_tome_upgrade_panel():

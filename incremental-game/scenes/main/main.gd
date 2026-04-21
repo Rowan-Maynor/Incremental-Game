@@ -152,6 +152,7 @@ func connect_signals():
 	well_upgrade_panel.spend_mana.connect(spend_mana)
 	well_upgrade_panel.well_base_increase.connect(mana_well.increase_base)
 	well_upgrade_panel.well_rate_increase.connect(mana_well.increase_rate)
+	well_upgrade_panel.well_rate_maxed.connect(disconnect_well_rate)
 	
 	#stone signals
 	stone.connect("gain_rune", gain_rune)
@@ -168,6 +169,9 @@ func stone_unlocked():
 		save_game()
 		show_rune_container()
 	curr_mana.disconnect(floor_2_bricks.check_unlock)
+
+func disconnect_well_rate():
+	curr_mana.disconnect(well_upgrade_panel.check_well_rate_cost)
 
 #panel functions
 func open_tome_upgrade_panel():

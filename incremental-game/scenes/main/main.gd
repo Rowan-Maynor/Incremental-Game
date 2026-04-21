@@ -153,8 +153,8 @@ func connect_signals():
 	
 	#stone signals
 	stone.connect("gain_rune", gain_rune)
-	curr_mana.connect(stone.check_unlock)
 	curr_mana.connect(floor_2_bricks.check_unlock)
+	floor_2_bricks.unlock_stone.connect(stone.check_unlock)
 	stone.stone_unlocked.connect(stone_unlocked)
 
 func tome_unlocked():
@@ -165,7 +165,7 @@ func stone_unlocked():
 		save_data["seen_rune"] = true
 		save_game()
 		show_rune_container()
-	curr_mana.disconnect(stone.check_unlock)
+	curr_mana.disconnect(floor_2_bricks.check_unlock)
 
 #panel functions
 func open_tome_upgrade_panel():

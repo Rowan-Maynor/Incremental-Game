@@ -3,6 +3,8 @@ extends Control
 var locked = true
 var unlock_goal : Big = Big.new(1, 1)
 
+signal unlock_stone()
+
 func check_unlock(value):
 	if not locked:
 		return
@@ -11,6 +13,7 @@ func check_unlock(value):
 		self.material.shader = null
 		locked = false
 		$NinePatchRect.visible = false
+		unlock_stone.emit()
 	
 	elif value.isGreaterThan(0) and locked:
 		var percentage : Big = value.divide(unlock_goal)

@@ -40,10 +40,15 @@ func _on_button_mouse_exited() -> void:
 func _on_button_pressed() -> void:
 	open_panel.emit()
 
-func increase_well_base(value):
+func increase_base(value):
 	well_base.plusEquals(value)
-	print(well_base.toAA())
 
 func _on_timer_timeout() -> void:
 	var final_value : Big = well_base.multiply(well_mult)
 	gain_mana.emit(final_value, "well")
+	$Sprite2D.play("pulse")
+
+
+func _on_sprite_2d_animation_finished() -> void:
+	if $Sprite2D.animation == "pulse":
+		$Sprite2D.play("idle")

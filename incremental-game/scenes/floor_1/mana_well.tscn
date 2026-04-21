@@ -1,12 +1,88 @@
 [gd_scene format=3 uid="uid://cxlp0lcjueuok"]
 
-[ext_resource type="Texture2D" uid="uid://b7ku2se6f0iwg" path="res://assets/floor_1/mana_well.png" id="1_2a2ou"]
 [ext_resource type="Shader" uid="uid://dn8lxpa76nul7" path="res://shaders/locked.gdshader" id="1_7uqe0"]
 [ext_resource type="Script" uid="uid://cjrvlwn4ms0p5" path="res://scenes/floor_1/mana_well.gd" id="1_b4otg"]
+[ext_resource type="Texture2D" uid="uid://ij61mrnrphdw" path="res://assets/floor_1/mana_well_anim.png" id="3_rvkco"]
 [ext_resource type="Texture2D" uid="uid://cp0sctb2oxnbp" path="res://assets/ui/blue_nine_patch_empty.png" id="4_rvkco"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4otg"]
 shader = ExtResource("1_7uqe0")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsbkn"]
+atlas = ExtResource("3_rvkco")
+region = Rect2(0, 0, 49, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jy4w0"]
+atlas = ExtResource("3_rvkco")
+region = Rect2(0, 0, 49, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6p4lp"]
+atlas = ExtResource("3_rvkco")
+region = Rect2(49, 0, 49, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_is8ai"]
+atlas = ExtResource("3_rvkco")
+region = Rect2(98, 0, 49, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwuky"]
+atlas = ExtResource("3_rvkco")
+region = Rect2(147, 0, 49, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2yvh1"]
+atlas = ExtResource("3_rvkco")
+region = Rect2(196, 0, 49, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uqqg"]
+atlas = ExtResource("3_rvkco")
+region = Rect2(245, 0, 49, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlw5r"]
+atlas = ExtResource("3_rvkco")
+region = Rect2(294, 0, 49, 22)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmiqx"]
+atlas = ExtResource("3_rvkco")
+region = Rect2(343, 0, 49, 22)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a4w3g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsbkn")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jy4w0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6p4lp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_is8ai")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwuky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2yvh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uqqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlw5r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmiqx")
+}],
+"loop": false,
+"name": &"pulse",
+"speed": 20.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsbkn"]
 bg_color = Color(1, 1, 1, 0)
@@ -22,9 +98,12 @@ anti_aliasing = false
 [node name="ManaWell" type="Node2D" unique_id=1285765595]
 script = ExtResource("1_b4otg")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1978906053]
+[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=1691945290]
 material = SubResource("ShaderMaterial_b4otg")
-texture = ExtResource("1_2a2ou")
+sprite_frames = SubResource("SpriteFrames_a4w3g")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.21114212
 
 [node name="Button" type="Button" parent="." unique_id=400594317]
 offset_left = -24.0
@@ -62,6 +141,7 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="." unique_id=849597338]
 wait_time = 10.0
 
+[connection signal="animation_finished" from="Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

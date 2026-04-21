@@ -6,7 +6,7 @@ var well_base_cost_inc_rate : Big = Big.new(1, 0)
 var well_base_value : Big = Big.new(1, 0)
 
 #well rate upgrade
-var well_rate_max : int = 9
+var well_rate_max : int = 4
 var well_rate_cost : Big = Big.new(1, 1)
 var well_rate_cost_inc_rate : Big = Big.new(1, 0)
 var well_rate_value : int = 1

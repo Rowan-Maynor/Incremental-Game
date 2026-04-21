@@ -28,6 +28,10 @@ var save_data : Dictionary = {
 	"seen_rune" : false,
 }
 
+#signals
+signal curr_mana(value)
+signal curr_rune(value)
+
 func _ready() -> void:
 	load_game()
 	set_big_properties()
@@ -124,6 +128,7 @@ func connect_signals():
 	#tome signals
 	curr_mana.connect(tome.check_unlock)
 	tome.tome_unlocked.connect(tome_unlocked)
+	tome.open_panel.connect(open_tome_upgrade_panel)
 	
 	#tome upgrade panel signals
 	tome_upgrade_panel.orb_click_base_increase.connect(orb.increase_base)
@@ -146,6 +151,6 @@ func stone_unlocked():
 		show_rune_container()
 	curr_mana.disconnect(stone.check_unlock)
 
-#signals
-signal curr_mana(value)
-signal curr_rune(value)
+#panel functions
+func open_tome_upgrade_panel():
+	tome_upgrade_panel.visible = true

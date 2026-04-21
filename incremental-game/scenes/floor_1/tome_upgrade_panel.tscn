@@ -8,7 +8,7 @@
 [node name="TomeUpgradePanel" type="Control" unique_id=524974591]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 150.0
+offset_right = 180.0
 offset_bottom = 38.0
 theme = ExtResource("1_rngrr")
 script = ExtResource("2_7yjpg")

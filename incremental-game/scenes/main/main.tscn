@@ -150,10 +150,10 @@ layout_mode = 2
 
 [node name="upgrade_panels" type="CanvasLayer" parent="." unique_id=416776959]
 
-[node name="TomeUpgradePanel" parent="upgrade_panels" unique_id=2146902147 instance=ExtResource("16_hxu8e")]
-offset_left = 327.0
-offset_top = 194.0
-offset_right = 477.0
-offset_bottom = 232.0
+[node name="TomeUpgradePanel" parent="upgrade_panels" unique_id=524974591 instance=ExtResource("16_hxu8e")]
+offset_left = 316.0
+offset_top = 198.0
+offset_right = 496.0
+offset_bottom = 236.0
 
 [node name="popup_labels" type="CanvasLayer" parent="." unique_id=1965218954]

@@ -99,12 +99,14 @@ func update_save(data):
 
 #unlock functions
 func handle_unlocks():
-	if save_data["seen_rune"]:
-		make_rune_container_visible()
+	if !save_data["seen_rune"]:
+		hide_rune_container()
 
-func make_rune_container_visible():
+func hide_rune_container():
+	$ui/resource_containers/rune_container.visible = false
+
+func show_rune_container():
 	$ui/resource_containers/rune_container.visible = true
-	
 
 #signal functions
 func connect_signals():
@@ -128,7 +130,7 @@ func stone_unlocked():
 	if not save_data["seen_rune"]:
 		save_data["seen_rune"] = true
 		save_game()
-		make_rune_container_visible()
+		show_rune_container()
 	curr_mana.disconnect(stone.check_unlock)
 
 #signals

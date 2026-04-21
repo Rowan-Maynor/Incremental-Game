@@ -10,7 +10,7 @@ var rune : Big = Big.new(0)
 @onready var tome : Node2D = $SubViewportContainer/SubViewport/floor_1/Tome
 
 #upgrade panels
-@onready var tome_upgrade_panel: PanelContainer = $upgrade_panels/TomeUpgradePanel
+@onready var tome_upgrade_panel: Control = $upgrade_panels/TomeUpgradePanel
 
 #floor_bricks
 @onready var floor_2_bricks : Control = $SubViewportContainer/SubViewport/floor_2/Bricks

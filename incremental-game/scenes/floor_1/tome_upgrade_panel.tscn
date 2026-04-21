@@ -3,60 +3,68 @@
 [ext_resource type="Theme" uid="uid://b01xg8hof71e2" path="res://blue_theme.tres" id="1_rngrr"]
 [ext_resource type="Script" uid="uid://d2h24a6pqq8ds" path="res://scenes/floor_1/tome_upgrade_panel.gd" id="2_7yjpg"]
 [ext_resource type="Texture2D" uid="uid://cpyh8w0rmpcbe" path="res://assets/ui/mana_icon.png" id="2_guay7"]
+[ext_resource type="Texture2D" uid="uid://bw3hsausam2w0" path="res://assets/ui/orb_icon_16px.png" id="3_7yjpg"]
 
-[node name="TomeUpgradePanel" type="PanelContainer" unique_id=2146902147]
+[node name="TomeUpgradePanel" type="Control" unique_id=524974591]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 150.0
 offset_bottom = 38.0
 theme = ExtResource("1_rngrr")
 script = ExtResource("2_7yjpg")
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=966224754]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1207119246]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 38.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=966224754]
 layout_mode = 2
 theme_override_constants/margin_bottom = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2105906697]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=2105906697]
 layout_mode = 2
 
-[node name="click_base" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1891778940]
+[node name="click_base" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1891778940]
 layout_mode = 2
 size_flags_vertical = 3
 theme = ExtResource("1_rngrr")
 disabled = true
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/click_base" unique_id=1171576272]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/click_base" unique_id=1171576272]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 6.0
-offset_right = 135.0
+offset_right = 167.0
 offset_bottom = 22.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/click_base/MarginContainer" unique_id=766761154]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer" unique_id=766761154]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer" unique_id=1214949255]
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer" unique_id=1214949255]
 layout_mode = 2
 
-[node name="upgrade_sprite" type="TextureRect" parent="MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1158431849]
+[node name="upgrade_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1158431849]
 layout_mode = 2
-texture = ExtResource("2_guay7")
+texture = ExtResource("3_7yjpg")
 stretch_mode = 3
 
-[node name="upgrade_description" type="Label" parent="MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1646091562]
+[node name="upgrade_description" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1646091562]
 layout_mode = 2
-text = "Click Value"
+text = "Click Base Value"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer" unique_id=1641931120]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer" unique_id=1641931120]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="cost" type="Label" parent="MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=948883527]
+[node name="cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=948883527]
 layout_mode = 2
 text = "11.00AA"
 
-[node name="cost_sprite" type="TextureRect" parent="MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=96500155]
+[node name="cost_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=96500155]
 layout_mode = 2
 texture = ExtResource("2_guay7")
 stretch_mode = 3
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/click_base" to="." method="_on_click_base_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/click_base" to="." method="_on_click_base_pressed"]

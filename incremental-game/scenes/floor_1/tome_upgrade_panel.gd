@@ -1,10 +1,10 @@
-extends PanelContainer
+extends Control
 
 var orb_click_base_cost : Big = Big.new(1, 1)
 var orb_click_base_cost_inc_rate : Big = Big.new(1, 0)
 var orb_click_base_value : Big = Big.new(1, 0)
-@onready var orb_click_base_label: Label = $MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer2/cost
-@onready var click_base_button: Button = $MarginContainer/VBoxContainer/click_base
+@onready var orb_click_base_label: Label = $PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer2/cost
+@onready var click_base_button: Button = $PanelContainer/MarginContainer/VBoxContainer/click_base
 
 func _ready() -> void:
 	update_click_base_label()

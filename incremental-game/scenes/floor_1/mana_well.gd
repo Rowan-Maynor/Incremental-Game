@@ -4,7 +4,6 @@ var locked : bool = true
 var unlock_goal : Big = Big.new(1, 1)
 var well_base : Big = Big.new(1, 1)
 var well_mult : Big = Big.new(1, 1)
-var well_rate : float = 10.0
 
 signal mana_well_unlocked()
 signal open_panel()
@@ -42,6 +41,12 @@ func _on_button_pressed() -> void:
 
 func increase_base(value):
 	well_base.plusEquals(value)
+
+func increase_rate(value):
+	if $Timer.wait_time > 1.0:
+		$Timer.wait_time -= value
+	else:
+		print("Exceeded maximum rate")
 
 func _on_timer_timeout() -> void:
 	var final_value : Big = well_base.multiply(well_mult)

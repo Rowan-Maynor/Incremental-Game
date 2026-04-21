@@ -103,7 +103,7 @@ material = SubResource("ShaderMaterial_b4otg")
 sprite_frames = SubResource("SpriteFrames_a4w3g")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.21114212
+frame_progress = 0.4598279
 
 [node name="Button" type="Button" parent="." unique_id=400594317]
 offset_left = -24.0

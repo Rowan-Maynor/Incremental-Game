@@ -1,7 +1,7 @@
 extends Control
 
 var locked = true
-var unlock_goal : Big = Big.new(1, 1)
+var unlock_goal : Big = Big.new(1, 4)
 
 signal unlock_stone()
 

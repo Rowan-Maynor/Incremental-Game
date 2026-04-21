@@ -148,8 +148,10 @@ func connect_signals():
 	
 	#well upgrade panel signals
 	curr_mana.connect(well_upgrade_panel.check_well_base_cost)
+	curr_mana.connect(well_upgrade_panel.check_well_rate_cost)
 	well_upgrade_panel.spend_mana.connect(spend_mana)
 	well_upgrade_panel.well_base_increase.connect(mana_well.increase_base)
+	well_upgrade_panel.well_rate_increase.connect(mana_well.increase_rate)
 	
 	#stone signals
 	stone.connect("gain_rune", gain_rune)

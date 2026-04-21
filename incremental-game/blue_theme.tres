@@ -1,10 +1,18 @@
 [gd_resource type="Theme" format=3 uid="uid://b01xg8hof71e2"]
 
 [ext_resource type="FontFile" uid="uid://dp02pi1sbiqfj" path="res://assets/font/m3x6.ttf" id="1_pow5s"]
+[ext_resource type="Texture2D" uid="uid://cg4goh5vkqsxf" path="res://assets/ui/blue_nine_patch_disabled.png" id="2_akh82"]
 [ext_resource type="Texture2D" uid="uid://1p1tsxv8vunt" path="res://assets/ui/blue_nine_patch_hover.png" id="2_kds6l"]
 [ext_resource type="Texture2D" uid="uid://dw5ae1yjrhc4c" path="res://assets/ui/blue_nine_patch.png" id="2_qj7bq"]
 [ext_resource type="Texture2D" uid="uid://c54tniywddeae" path="res://assets/ui/blue_nine_patch_panel.png" id="3_qj7bq"]
 [ext_resource type="Texture2D" uid="uid://d2ueb5846xdma" path="res://assets/ui/blue_nine_patch_press.png" id="4_xul6d"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v2ujx"]
+texture = ExtResource("2_akh82")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xul6d"]
 texture = ExtResource("2_kds6l")
@@ -37,6 +45,7 @@ texture_margin_bottom = 5.0
 [resource]
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_pow5s")
+Button/styles/disabled = SubResource("StyleBoxTexture_v2ujx")
 Button/styles/hover = SubResource("StyleBoxTexture_xul6d")
 Button/styles/normal = SubResource("StyleBoxTexture_btdo5")
 Button/styles/pressed = SubResource("StyleBoxTexture_akh82")

@@ -9,6 +9,9 @@ var rune : Big = Big.new(0)
 @onready var mana_well : Node2D = $SubViewportContainer/SubViewport/floor_1/ManaWell
 @onready var tome : Node2D = $SubViewportContainer/SubViewport/floor_1/Tome
 
+#upgrade panels
+@onready var tome_upgrade_panel: PanelContainer = $upgrade_panels/TomeUpgradePanel
+
 #floor_bricks
 @onready var floor_2_bricks : Control = $SubViewportContainer/SubViewport/floor_2/Bricks
 
@@ -46,6 +49,10 @@ func gain_mana(value, src):
 	curr_mana.emit(mana)
 	spawn_label("mana", value, src)
 
+func spend_mana(value):
+	mana.minusEquals(value)
+	curr_mana.emit(mana)
+
 func gain_rune(value, src):
 	rune.plusEquals(value)
 	curr_rune.emit(rune)
@@ -76,6 +83,7 @@ func spawn_label(type : String, value : Big, src : String):
 func set_big_properties():
 	Big.setSmallDecimals(0)
 
+#save game functions
 func save_game():
 	var save_file = FileAccess.open("user://savegame.json", FileAccess.WRITE)
 	save_file.store_var(save_data.duplicate())
@@ -116,6 +124,11 @@ func connect_signals():
 	#tome signals
 	curr_mana.connect(tome.check_unlock)
 	tome.tome_unlocked.connect(tome_unlocked)
+	
+	#tome upgrade panel signals
+	tome_upgrade_panel.orb_click_base_increase.connect(orb.increase_base)
+	curr_mana.connect(tome_upgrade_panel.check_orb_click_base_cost)
+	tome_upgrade_panel.spend_mana.connect(spend_mana)
 	
 	#stone signals
 	stone.connect("gain_rune", gain_rune)

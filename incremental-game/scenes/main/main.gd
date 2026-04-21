@@ -74,7 +74,7 @@ func spawn_label(type : String, value : Big, src : String):
 	if src == "orb" or src == "stone":
 		label.position = get_global_mouse_position()
 	elif src == "well":
-		var pos_x : int = randi_range(350, 450)
+		var pos_x : int = randi_range(375, 425)
 		var pos_y : int = randi_range(300, 325)
 		var pos_final : Vector2 = Vector2(pos_x, pos_y)
 		label.position = pos_final

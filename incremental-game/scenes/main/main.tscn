@@ -15,6 +15,7 @@
 [ext_resource type="Theme" uid="uid://b211ssscuusjr" path="res://main_theme.tres" id="12_blune"]
 [ext_resource type="Texture2D" uid="uid://cj3vkkuussbah" path="res://assets/ui/purple_nine_patch.png" id="13_th5th"]
 [ext_resource type="Texture2D" uid="uid://cdu5wxmkt65s6" path="res://assets/ui/rune_icon.png" id="14_7smn1"]
+[ext_resource type="Theme" uid="uid://b01xg8hof71e2" path="res://blue_theme.tres" id="16_hxu8e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_blune"]
 texture = ExtResource("10_ouso4")
@@ -146,5 +147,63 @@ horizontal_alignment = 2
 
 [node name="spacing" type="Control" parent="ui/resource_containers/rune_container/HBoxContainer/VBoxContainer" unique_id=657509813]
 layout_mode = 2
+
+[node name="pupup_boxes" type="CanvasLayer" parent="." unique_id=416776959]
+
+[node name="tome_upgrades" type="PanelContainer" parent="pupup_boxes" unique_id=1659193346]
+custom_minimum_size = Vector2(150, 0)
+offset_left = 164.0
+offset_top = 200.0
+offset_right = 314.0
+offset_bottom = 238.0
+theme = ExtResource("16_hxu8e")
+
+[node name="MarginContainer" type="MarginContainer" parent="pupup_boxes/tome_upgrades" unique_id=996189029]
+layout_mode = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="pupup_boxes/tome_upgrades/MarginContainer" unique_id=1962955902]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="pupup_boxes/tome_upgrades/MarginContainer/VBoxContainer" unique_id=788376116]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("16_hxu8e")
+
+[node name="MarginContainer" type="MarginContainer" parent="pupup_boxes/tome_upgrades/MarginContainer/VBoxContainer/Button" unique_id=1063503379]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 135.0
+offset_bottom = 22.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="pupup_boxes/tome_upgrades/MarginContainer/VBoxContainer/Button/MarginContainer" unique_id=1465756113]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="pupup_boxes/tome_upgrades/MarginContainer/VBoxContainer/Button/MarginContainer/HBoxContainer" unique_id=248915878]
+layout_mode = 2
+
+[node name="upgrade_sprite" type="TextureRect" parent="pupup_boxes/tome_upgrades/MarginContainer/VBoxContainer/Button/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1755400078]
+layout_mode = 2
+texture = ExtResource("10_a8run")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="pupup_boxes/tome_upgrades/MarginContainer/VBoxContainer/Button/MarginContainer/HBoxContainer/HBoxContainer" unique_id=2109802530]
+layout_mode = 2
+text = "Click Value"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="pupup_boxes/tome_upgrades/MarginContainer/VBoxContainer/Button/MarginContainer/HBoxContainer" unique_id=231554191]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Label2" type="Label" parent="pupup_boxes/tome_upgrades/MarginContainer/VBoxContainer/Button/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1373604131]
+layout_mode = 2
+text = "11.00AA"
+
+[node name="cost_sprite" type="TextureRect" parent="pupup_boxes/tome_upgrades/MarginContainer/VBoxContainer/Button/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1061695006]
+layout_mode = 2
+texture = ExtResource("10_a8run")
+stretch_mode = 3
 
 [node name="popup_labels" type="CanvasLayer" parent="." unique_id=1965218954]

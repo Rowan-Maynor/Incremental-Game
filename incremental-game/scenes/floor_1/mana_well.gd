@@ -1,7 +1,7 @@
 extends Node2D
 
 var locked : bool = true
-var unlock_goal : Big = Big.new(1, 1)
+var unlock_goal : Big = Big.new(1, 3)
 var well_base : Big = Big.new(1, 1)
 var well_mult : Big = Big.new(1, 1)
 

@@ -159,6 +159,7 @@ offset_right = 496.0
 offset_bottom = 236.0
 
 [node name="ManaWellUpgradePanel" parent="upgrade_panels" unique_id=762903939 instance=ExtResource("17_nvumn")]
+visible = false
 offset_left = 148.0
 offset_top = 198.0
 offset_right = -313.0

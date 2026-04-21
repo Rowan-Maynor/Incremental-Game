@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cj3vkkuussbah" path="res://assets/ui/purple_nine_patch.png" id="13_th5th"]
 [ext_resource type="Texture2D" uid="uid://cdu5wxmkt65s6" path="res://assets/ui/rune_icon.png" id="14_7smn1"]
 [ext_resource type="PackedScene" uid="uid://dijuob1fwuukq" path="res://scenes/floor_1/tome_upgrade_panel.tscn" id="16_hxu8e"]
+[ext_resource type="PackedScene" uid="uid://dhxm44p7e4hud" path="res://scenes/floor_1/mana_well_upgrade_panel.tscn" id="17_nvumn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_blune"]
 texture = ExtResource("10_ouso4")
@@ -151,9 +152,17 @@ layout_mode = 2
 [node name="upgrade_panels" type="CanvasLayer" parent="." unique_id=416776959]
 
 [node name="TomeUpgradePanel" parent="upgrade_panels" unique_id=524974591 instance=ExtResource("16_hxu8e")]
+visible = false
 offset_left = 316.0
 offset_top = 198.0
 offset_right = 496.0
 offset_bottom = 236.0
+
+[node name="ManaWellUpgradePanel" parent="upgrade_panels" unique_id=762903939 instance=ExtResource("17_nvumn")]
+visible = false
+offset_left = 148.0
+offset_top = 198.0
+offset_right = -313.0
+offset_bottom = -124.0
 
 [node name="popup_labels" type="CanvasLayer" parent="." unique_id=1965218954]

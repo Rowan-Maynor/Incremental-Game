@@ -11,6 +11,7 @@ var rune : Big = Big.new(0)
 
 #upgrade panels
 @onready var tome_upgrade_panel: Control = $upgrade_panels/TomeUpgradePanel
+@onready var well_upgrade_panel: Control = $upgrade_panels/ManaWellUpgradePanel
 
 #floor_bricks
 @onready var floor_2_bricks : Control = $SubViewportContainer/SubViewport/floor_2/Bricks
@@ -135,6 +136,14 @@ func connect_signals():
 	curr_mana.connect(tome_upgrade_panel.check_orb_click_base_cost)
 	tome_upgrade_panel.spend_mana.connect(spend_mana)
 	
+	#mana well signals
+	curr_mana.connect(mana_well.check_unlock)
+	mana_well.open_panel.connect(open_well_upgrade_panel)
+	
+	#well upgrade panel signals
+	curr_mana.connect(well_upgrade_panel.check_well_base_cost)
+	well_upgrade_panel.spend_mana.connect(spend_mana)
+	
 	#stone signals
 	stone.connect("gain_rune", gain_rune)
 	curr_mana.connect(stone.check_unlock)
@@ -154,3 +163,6 @@ func stone_unlocked():
 #panel functions
 func open_tome_upgrade_panel():
 	tome_upgrade_panel.visible = true
+
+func open_well_upgrade_panel():
+	well_upgrade_panel.visible = true

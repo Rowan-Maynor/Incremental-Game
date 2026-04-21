@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dhxm44p7e4hud"]
+
+[ext_resource type="Theme" uid="uid://b01xg8hof71e2" path="res://blue_theme.tres" id="1_pjs6q"]
+[ext_resource type="Script" uid="uid://cmnqcvhr4i6ni" path="res://scenes/floor_1/mana_well_upgrade_panel.gd" id="2_ik807"]
+[ext_resource type="Texture2D" uid="uid://4xk6yu8ugr7d" path="res://assets/ui/well_icon_16.png" id="3_pjs6q"]
+[ext_resource type="Texture2D" uid="uid://cpyh8w0rmpcbe" path="res://assets/ui/mana_icon.png" id="4_nbyjy"]
+
+[node name="ManaWellUpgradePanel" type="Control" unique_id=762903939]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -461.0
+offset_bottom = -322.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_pjs6q")
+script = ExtResource("2_ik807")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2052673948]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 38.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=860081058]
+layout_mode = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=858609624]
+layout_mode = 2
+
+[node name="well_base" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1434199705]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_pjs6q")
+disabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/well_base" unique_id=879338682]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 167.0
+offset_bottom = 22.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/well_base/MarginContainer" unique_id=1096495897]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/well_base/MarginContainer/HBoxContainer" unique_id=786812470]
+layout_mode = 2
+
+[node name="upgrade_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/well_base/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1717898072]
+layout_mode = 2
+texture = ExtResource("3_pjs6q")
+stretch_mode = 3
+
+[node name="upgrade_description" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/well_base/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1387770643]
+layout_mode = 2
+text = "Base Value"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/well_base/MarginContainer/HBoxContainer" unique_id=1859072370]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/well_base/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1628388104]
+layout_mode = 2
+text = "11.00AA"
+
+[node name="cost_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/well_base/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1465128476]
+layout_mode = 2
+texture = ExtResource("4_nbyjy")
+stretch_mode = 3
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/well_base" to="." method="_on_well_base_pressed"]

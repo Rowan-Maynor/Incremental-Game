@@ -3,9 +3,21 @@
 [ext_resource type="Texture2D" uid="uid://b7ku2se6f0iwg" path="res://assets/floor_1/mana_well.png" id="1_2a2ou"]
 [ext_resource type="Shader" uid="uid://dn8lxpa76nul7" path="res://shaders/locked.gdshader" id="1_7uqe0"]
 [ext_resource type="Script" uid="uid://cjrvlwn4ms0p5" path="res://scenes/floor_1/mana_well.gd" id="1_b4otg"]
+[ext_resource type="Texture2D" uid="uid://cp0sctb2oxnbp" path="res://assets/ui/blue_nine_patch_empty.png" id="4_rvkco"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b4otg"]
 shader = ExtResource("1_7uqe0")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fsbkn"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jy4w0"]
+bg_color = Color(0.0627451, 0.3882353, 0.61960787, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+anti_aliasing = false
 
 [node name="ManaWell" type="Node2D" unique_id=1285765595]
 script = ExtResource("1_b4otg")
@@ -13,3 +25,40 @@ script = ExtResource("1_b4otg")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1978906053]
 material = SubResource("ShaderMaterial_b4otg")
 texture = ExtResource("1_2a2ou")
+
+[node name="Button" type="Button" parent="." unique_id=400594317]
+offset_left = -24.0
+offset_top = -11.0
+offset_right = 25.0
+offset_bottom = 11.0
+flat = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=2076038112]
+visible = false
+z_index = 1
+offset_left = -25.0
+offset_top = -29.0
+offset_right = 25.0
+offset_bottom = -19.0
+texture = ExtResource("4_rvkco")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="NinePatchRect" unique_id=1464116642]
+z_index = -1
+layout_mode = 0
+offset_left = 2.0
+offset_top = 9.0
+offset_right = 10.0
+offset_bottom = 55.0
+rotation = 4.712389
+theme_override_styles/background = SubResource("StyleBoxFlat_fsbkn")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jy4w0")
+fill_mode = 2
+show_percentage = false
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -71,8 +71,13 @@ func spawn_label(type : String, value : Big, src : String):
 	label.value = value
 	
 	#position needs to be set differently based on src
-	if src == "orb" or "stone":
+	if src == "orb" or src == "stone":
 		label.position = get_global_mouse_position()
+	elif src == "well":
+		var pos_x : int = randi_range(350, 450)
+		var pos_y : int = randi_range(300, 325)
+		var pos_final : Vector2 = Vector2(pos_x, pos_y)
+		label.position = pos_final
 	
 	#add to main
 	popup_labels.add_child(label)
@@ -139,6 +144,7 @@ func connect_signals():
 	#mana well signals
 	curr_mana.connect(mana_well.check_unlock)
 	mana_well.open_panel.connect(open_well_upgrade_panel)
+	mana_well.gain_mana.connect(gain_mana)
 	
 	#well upgrade panel signals
 	curr_mana.connect(well_upgrade_panel.check_well_base_cost)

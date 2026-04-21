@@ -8,6 +8,7 @@ var well_rate : float = 10.0
 
 signal mana_well_unlocked()
 signal open_panel()
+signal gain_mana(value, src)
 
 func check_unlock(value):
 	if not locked:
@@ -19,6 +20,7 @@ func check_unlock(value):
 		$Button.disabled = false
 		emit_signal("mana_well_unlocked")
 		$NinePatchRect.visible = false
+		$Timer.start()
 	elif value.isGreaterThan(0) and locked:
 			var percentage : Big = value.divide(unlock_goal)
 			$NinePatchRect/ProgressBar.value = float(percentage.toString()) * 100
@@ -41,3 +43,7 @@ func _on_button_pressed() -> void:
 func increase_well_base(value):
 	well_base.plusEquals(value)
 	print(well_base.toAA())
+
+func _on_timer_timeout() -> void:
+	var final_value : Big = well_base.multiply(well_mult)
+	gain_mana.emit(final_value, "well")

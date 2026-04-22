@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://dnnnckmffmotx"]
+
+[ext_resource type="Theme" uid="uid://dy0lsyvx4ik0u" path="res://purple_theme.tres" id="1_b0ila"]
+[ext_resource type="Texture2D" uid="uid://ls6nrpd7hjo5" path="res://assets/ui/purple_nine_patch_panel.png" id="1_qq8gy"]
+[ext_resource type="Script" uid="uid://ded78rctx6d6m" path="res://scenes/floor_2/tool_shed_upgrade_panel.gd" id="2_qq8gy"]
+[ext_resource type="Texture2D" uid="uid://cpyh8w0rmpcbe" path="res://assets/ui/mana_icon.png" id="4_pn7wn"]
+[ext_resource type="Texture2D" uid="uid://c7saqw10f10ce" path="res://assets/ui/stone_icon_16px.png" id="4_qq8gy"]
+[ext_resource type="Texture2D" uid="uid://cdu5wxmkt65s6" path="res://assets/ui/rune_icon.png" id="5_764d1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qq8gy"]
+texture = ExtResource("1_qq8gy")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[node name="ToolShedUpgradePanel" type="Control" unique_id=762903939]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -461.0
+offset_bottom = -251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_b0ila")
+script = ExtResource("2_qq8gy")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2052673948]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 109.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qq8gy")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=860081058]
+layout_mode = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=858609624]
+layout_mode = 2
+
+[node name="swing_power" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1434199705]
+layout_mode = 2
+size_flags_vertical = 3
+disabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/swing_power" unique_id=879338682]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 167.0
+offset_bottom = 22.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/swing_power/MarginContainer" unique_id=1096495897]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/swing_power/MarginContainer/HBoxContainer" unique_id=786812470]
+layout_mode = 2
+
+[node name="upgrade_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/swing_power/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1717898072]
+layout_mode = 2
+texture = ExtResource("4_qq8gy")
+stretch_mode = 3
+
+[node name="upgrade_description" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/swing_power/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1387770643]
+layout_mode = 2
+text = "Swing Power"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/swing_power/MarginContainer/HBoxContainer" unique_id=1859072370]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/swing_power/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1628388104]
+layout_mode = 2
+text = "11.00AA"
+
+[node name="cost_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/swing_power/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1465128476]
+layout_mode = 2
+texture = ExtResource("4_pn7wn")
+stretch_mode = 3
+
+[node name="stone_base" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1327292480]
+layout_mode = 2
+size_flags_vertical = 3
+disabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_base" unique_id=32033597]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 167.0
+offset_bottom = 22.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_base/MarginContainer" unique_id=1816834245]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_base/MarginContainer/HBoxContainer" unique_id=1828223316]
+layout_mode = 2
+
+[node name="upgrade_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/stone_base/MarginContainer/HBoxContainer/HBoxContainer" unique_id=379140283]
+layout_mode = 2
+texture = ExtResource("4_qq8gy")
+stretch_mode = 3
+
+[node name="upgrade_description" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/stone_base/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1128215594]
+layout_mode = 2
+text = "Increase Base Value"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_base/MarginContainer/HBoxContainer" unique_id=2119682021]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/stone_base/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=631843631]
+layout_mode = 2
+text = "11.00AA"
+
+[node name="cost_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/stone_base/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1455830680]
+layout_mode = 2
+texture = ExtResource("5_764d1")
+stretch_mode = 3
+
+[node name="stone_auto_click" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1390132530]
+layout_mode = 2
+size_flags_vertical = 3
+disabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_click" unique_id=543922981]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 167.0
+offset_bottom = 22.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_click/MarginContainer" unique_id=364875367]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_click/MarginContainer/HBoxContainer" unique_id=495036326]
+layout_mode = 2
+
+[node name="upgrade_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_click/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1905363539]
+layout_mode = 2
+texture = ExtResource("4_qq8gy")
+stretch_mode = 3
+
+[node name="upgrade_description" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_click/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1355479651]
+layout_mode = 2
+text = "Auto Click"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_click/MarginContainer/HBoxContainer" unique_id=1797457867]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_click/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=542069433]
+layout_mode = 2
+text = "11.00AA"
+
+[node name="cost_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_click/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=896681612]
+layout_mode = 2
+texture = ExtResource("5_764d1")
+stretch_mode = 3
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/swing_power" to="." method="_on_swing_power_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/stone_base" to="." method="_on_stone_base_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/stone_auto_click" to="." method="_on_stone_auto_click_pressed"]

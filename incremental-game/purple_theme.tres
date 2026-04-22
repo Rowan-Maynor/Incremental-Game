@@ -1,0 +1,42 @@
+[gd_resource type="Theme" format=3 uid="uid://dy0lsyvx4ik0u"]
+
+[ext_resource type="Texture2D" uid="uid://4cncjuxi1lww" path="res://assets/ui/purple_nine_patch_disabled.png" id="1_3h0hu"]
+[ext_resource type="FontFile" uid="uid://dp02pi1sbiqfj" path="res://assets/font/m3x6.ttf" id="2_fdyyn"]
+[ext_resource type="Texture2D" uid="uid://buwgp2kx6sg4b" path="res://assets/ui/purple_nine_patch_hover.png" id="2_uo5qw"]
+[ext_resource type="Texture2D" uid="uid://cj3vkkuussbah" path="res://assets/ui/purple_nine_patch.png" id="3_fdibb"]
+[ext_resource type="Texture2D" uid="uid://dv11aeeagj7s5" path="res://assets/ui/purple_nine_patch_pressed.png" id="4_bg6r2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4ebex"]
+texture = ExtResource("1_3h0hu")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wg4wl"]
+texture = ExtResource("2_uo5qw")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c6kmr"]
+texture = ExtResource("3_fdibb")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sraoh"]
+texture = ExtResource("4_bg6r2")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[resource]
+Button/styles/disabled = SubResource("StyleBoxTexture_4ebex")
+Button/styles/hover = SubResource("StyleBoxTexture_wg4wl")
+Button/styles/normal = SubResource("StyleBoxTexture_c6kmr")
+Button/styles/pressed = SubResource("StyleBoxTexture_sraoh")
+Label/fonts/font = ExtResource("2_fdyyn")

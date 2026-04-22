@@ -61,6 +61,9 @@ max_value = 10.0
 fill_mode = 2
 show_percentage = false
 
+[node name="Timer" type="Timer" parent="." unique_id=290807696]
+
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

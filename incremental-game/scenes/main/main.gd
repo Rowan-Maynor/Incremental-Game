@@ -8,10 +8,12 @@ var rune : Big = Big.new(0)
 @onready var stone : Node2D = $SubViewportContainer/SubViewport/floor_2/Stone
 @onready var mana_well : Node2D = $SubViewportContainer/SubViewport/floor_1/ManaWell
 @onready var tome : Node2D = $SubViewportContainer/SubViewport/floor_1/Tome
+@onready var tool_shed : Node2D = $SubViewportContainer/SubViewport/floor_2/ToolShed
 
 #upgrade panels
-@onready var tome_upgrade_panel: Control = $upgrade_panels/TomeUpgradePanel
-@onready var well_upgrade_panel: Control = $upgrade_panels/ManaWellUpgradePanel
+@onready var tome_upgrade_panel : Control = $upgrade_panels/TomeUpgradePanel
+@onready var well_upgrade_panel : Control = $upgrade_panels/ManaWellUpgradePanel
+@onready var tool_shed_upgrade_panel : Control = $upgrade_panels/ToolShedUpgradePanel
 
 #floor_bricks
 @onready var floor_1_bricks : Control = $SubViewportContainer/SubViewport/floor_1/Bricks
@@ -24,7 +26,7 @@ var rune : Big = Big.new(0)
 
 #save properties
 #must increment when any fields are added/removed from save data
-var latest_save_version: int = 1
+var latest_save_version : int = 1
 var save_data : Dictionary = {
 	"version" : 0,
 	"seen_rune" : false,
@@ -181,6 +183,20 @@ func connect_signals():
 	#stone signals
 	stone.connect("gain_rune", gain_rune)
 	stone.stone_unlocked.connect(stone_unlocked)
+	
+	#tool shed signals
+	curr_rune.connect(tool_shed.check_unlock)
+	tool_shed.open_panel.connect(open_tool_shed_upgrade_panel)
+	
+	#too shed upgrade panel signals
+	curr_mana.connect(tool_shed_upgrade_panel.check_cost)
+	curr_rune.connect(tool_shed_upgrade_panel.check_cost)
+	tool_shed_upgrade_panel.spend_mana.connect(spend_mana)
+	tool_shed_upgrade_panel.spend_rune.connect(spend_rune)
+	tool_shed_upgrade_panel.stone_swing_power_increase.connect(stone.increase_swing_power)
+	tool_shed_upgrade_panel.stone_base_increase.connect(stone.increase_base)
+	tool_shed_upgrade_panel.stone_auto_click.connect(stone.unlock_auto_click)
+	
 
 func tome_unlocked():
 	curr_mana.disconnect(tome.check_unlock)
@@ -198,3 +214,6 @@ func open_tome_upgrade_panel():
 
 func open_well_upgrade_panel():
 	well_upgrade_panel.visible = true
+
+func open_tool_shed_upgrade_panel():
+	tool_shed_upgrade_panel.visible = true

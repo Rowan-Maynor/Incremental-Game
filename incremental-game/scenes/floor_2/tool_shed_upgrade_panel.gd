@@ -25,7 +25,7 @@ extends Control
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/stone_auto_click,
 		"label" : $PanelContainer/MarginContainer/VBoxContainer/stone_auto_click/MarginContainer/HBoxContainer/HBoxContainer2/cost,
 		"signal" : stone_auto_click,
-		"cost" : Big.new(1, 3),
+		"cost" : Big.new(1, 2),
 		"cost_signal" : spend_rune,
 		"inc_rate" : Big.new(5, 0),
 		"value" : true,

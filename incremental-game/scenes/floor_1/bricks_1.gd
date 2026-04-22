@@ -1,6 +1,6 @@
 extends Control
 
-var unlock_goal : Big = Big.new(1, 4)
+var unlock_goal : Big = Big.new(5, 3)
 
 signal unlock_stone()
 signal unlock_floor_2()

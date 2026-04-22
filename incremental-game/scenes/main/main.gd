@@ -94,6 +94,11 @@ func spawn_label(type : String, value : Big, src : String):
 		var pos_y : int = randi_range(250, 295)
 		var pos_final : Vector2 = Vector2(pos_x, pos_y)
 		label.position = pos_final
+	elif src == "stone_auto":
+		var pos_x : int = randi_range(45, 110)
+		var pos_y : int = randi_range(145, 115)
+		var pos_final : Vector2 = Vector2(pos_x, pos_y)
+		label.position = pos_final
 	
 	#add to main
 	popup_labels.add_child(label)

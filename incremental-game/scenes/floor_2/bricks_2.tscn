@@ -4,18 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://b23lh8ljgg0wp" path="res://assets/floor_2/border_purple.png" id="1_lop72"]
 [ext_resource type="Texture2D" uid="uid://b0pgadmedgmii" path="res://assets/floor_2/brick_pattern_purple.png" id="2_3bg6c"]
 [ext_resource type="Script" uid="uid://csvqix7hoi1i5" path="res://scenes/floor_2/bricks_2.gd" id="2_cue2c"]
-[ext_resource type="Texture2D" uid="uid://cp0sctb2oxnbp" path="res://assets/ui/blue_nine_patch_empty.png" id="5_22tob"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cue2c"]
 shader = ExtResource("1_3bg6c")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22tob"]
-bg_color = Color(0.0627451, 0.3882353, 0.61960787, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-anti_aliasing = false
 
 [node name="Bricks" type="Control" unique_id=1898532271]
 material = SubResource("ShaderMaterial_cue2c")
@@ -65,29 +56,3 @@ offset_left = 240.0
 offset_right = 320.0
 offset_bottom = 90.0
 texture = ExtResource("2_3bg6c")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1745149787]
-visible = false
-z_index = 1
-layout_mode = 1
-offset_left = 70.0
-offset_top = 10.0
-offset_right = 250.0
-offset_bottom = 20.0
-texture = ExtResource("5_22tob")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="ProgressBar" type="ProgressBar" parent="NinePatchRect" unique_id=1052237685]
-z_index = -1
-layout_mode = 0
-offset_left = 2.0
-offset_top = 9.0
-offset_right = 10.0
-offset_bottom = 185.82233
-rotation = 4.712389
-theme_override_styles/fill = SubResource("StyleBoxFlat_22tob")
-fill_mode = 2
-show_percentage = false

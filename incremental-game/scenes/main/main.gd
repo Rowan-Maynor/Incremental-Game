@@ -14,6 +14,7 @@ var rune : Big = Big.new(0)
 @onready var well_upgrade_panel: Control = $upgrade_panels/ManaWellUpgradePanel
 
 #floor_bricks
+@onready var floor_1_bricks : Control = $SubViewportContainer/SubViewport/floor_1/Bricks
 @onready var floor_2_bricks : Control = $SubViewportContainer/SubViewport/floor_2/Bricks
 
 #resource value lables
@@ -141,6 +142,11 @@ func show_rune_container():
 
 #signal functions
 func connect_signals():
+	#floor 1 signals
+	curr_mana.connect(floor_1_bricks.check_unlock)
+	floor_1_bricks.unlock_stone.connect(stone.check_unlock)
+	floor_1_bricks.unlock_floor_2.connect(floor_2_bricks.unlock_floor_2)
+	
 	#orb signals
 	orb.connect("gain_mana", gain_mana)
 	
@@ -174,8 +180,6 @@ func connect_signals():
 	
 	#stone signals
 	stone.connect("gain_rune", gain_rune)
-	curr_mana.connect(floor_2_bricks.check_unlock)
-	floor_2_bricks.unlock_stone.connect(stone.check_unlock)
 	stone.stone_unlocked.connect(stone_unlocked)
 
 func tome_unlocked():
@@ -186,7 +190,7 @@ func stone_unlocked():
 		save_data["seen_rune"] = true
 		save_game()
 		show_rune_container()
-	curr_mana.disconnect(floor_2_bricks.check_unlock)
+	curr_mana.disconnect(floor_1_bricks.check_unlock)
 
 #panel functions
 func open_tome_upgrade_panel():

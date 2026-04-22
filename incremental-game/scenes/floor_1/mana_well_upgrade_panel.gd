@@ -9,8 +9,7 @@ extends Control
 		"cost_signal" : spend_mana,
 		"inc_rate" : Big.new(5, 0),
 		"value" : Big.new(5, 1),
-		"max" : 1,
-		"max_signal" : well_base_maxed
+		"max" : 10,
 		},
 	"well_rate" : {
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/well_rate,
@@ -21,7 +20,6 @@ extends Control
 		"inc_rate" : Big.new(1, 2),
 		"value" : 1,
 		"max" : 4,
-		"max_signal" : well_rate_maxed
 	},
 	"well_mult" : {
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/well_mult,
@@ -32,7 +30,6 @@ extends Control
 		"inc_rate" : Big.new(1, 2),
 		"value" : Big.new(1, 0),
 		"max" : 4,
-		"max_signal" : well_mult_maxed
 	}
 }
 
@@ -42,9 +39,6 @@ signal spend_rune(value)
 signal well_base_increase(value)
 signal well_rate_increase(value)
 signal well_mult_increase(value)
-signal well_base_maxed()
-signal well_rate_maxed()
-signal well_mult_maxed()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -101,7 +95,6 @@ func handle_upgrade(upgrade : String):
 func handle_max_upgrade(upgrade : String):
 	upgrade_data[upgrade]["label"].text = "MAX"
 	upgrade_data[upgrade]["button"].disabled = true
-	upgrade_data[upgrade]["max_signal"].emit()
 
 func _on_well_base_pressed() -> void:
 	handle_upgrade("well_base")

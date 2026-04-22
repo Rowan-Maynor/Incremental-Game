@@ -48,6 +48,8 @@ func _input(_event: InputEvent) -> void:
 		get_tree().quit()
 	if Input.is_action_just_pressed("add_1k_mana"):
 		gain_mana(Big.new(1, 3), "orb")
+	if Input.is_action_just_pressed("add_1k_rune"):
+		gain_rune(Big.new(1, 3), "stone")
 
 #resource math functions
 #src is necessary to help control spawn_label positioning
@@ -82,6 +84,11 @@ func spawn_label(type : String, value : Big, src : String):
 	elif src == "well":
 		var pos_x : int = randi_range(375, 425)
 		var pos_y : int = randi_range(300, 325)
+		var pos_final : Vector2 = Vector2(pos_x, pos_y)
+		label.position = pos_final
+	elif src == "orb_auto":
+		var pos_x : int = randi_range(45, 120)
+		var pos_y : int = randi_range(250, 295)
 		var pos_final : Vector2 = Vector2(pos_x, pos_y)
 		label.position = pos_final
 	
@@ -144,7 +151,9 @@ func connect_signals():
 	
 	#tome upgrade panel signals
 	tome_upgrade_panel.orb_click_base_increase.connect(orb.increase_base)
+	tome_upgrade_panel.orb_auto_click.connect(orb.unlock_auto_click)
 	curr_mana.connect(tome_upgrade_panel.check_cost)
+	curr_rune.connect(tome_upgrade_panel.check_cost)
 	tome_upgrade_panel.spend_mana.connect(spend_mana)
 	
 	#mana well signals

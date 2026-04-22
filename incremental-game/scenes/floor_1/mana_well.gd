@@ -2,14 +2,14 @@ extends Node2D
 
 var locked : bool = true
 var unlock_goal : Big = Big.new(5, 2)
-var well_base : Big = Big.new(1, 1)
-var well_mult : Big = Big.new(1, 1)
+var well_base : Big = Big.new(5, 1)
+var well_mult : Big = Big.new(1, 0)
 
 signal mana_well_unlocked()
 signal open_panel()
 signal gain_mana(value, src)
 
-func check_unlock(value):
+func check_unlock(_type, value):
 	if not locked:
 		return
 	
@@ -41,6 +41,9 @@ func _on_button_pressed() -> void:
 
 func increase_base(value):
 	well_base.plusEquals(value)
+
+func increase_mult(value):
+	well_mult.plusEquals(value)
 
 func increase_rate(value):
 	if $Timer.wait_time > 1.0:

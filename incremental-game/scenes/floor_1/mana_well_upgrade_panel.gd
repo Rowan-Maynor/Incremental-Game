@@ -1,28 +1,50 @@
 extends Control
 
-#well base upgrade
-var well_base_cost : Big = Big.new(1, 1)
-var well_base_cost_inc_rate : Big = Big.new(1, 0)
-var well_base_value : Big = Big.new(1, 0)
-
-#well rate upgrade
-var well_rate_max : int = 4
-var well_rate_cost : Big = Big.new(1, 1)
-var well_rate_cost_inc_rate : Big = Big.new(1, 0)
-var well_rate_value : int = 1
-
-#paths
-@onready var well_base_label: Label = $PanelContainer/MarginContainer/VBoxContainer/well_base/MarginContainer/HBoxContainer/HBoxContainer2/cost
-@onready var well_base_button: Button = $PanelContainer/MarginContainer/VBoxContainer/well_base
-@onready var well_rate_label: Label = $PanelContainer/MarginContainer/VBoxContainer/well_rate/MarginContainer/HBoxContainer/HBoxContainer2/cost
-@onready var well_rate_button: Button = $PanelContainer/MarginContainer/VBoxContainer/well_rate
-
+@onready var upgrade_data : Dictionary = {
+	"well_base" : {
+		"button" : $PanelContainer/MarginContainer/VBoxContainer/well_base,
+		"label" : $PanelContainer/MarginContainer/VBoxContainer/well_base/MarginContainer/HBoxContainer/HBoxContainer2/cost,
+		"signal" : well_base_increase,
+		"cost" : Big.new(1, 2),
+		"cost_signal" : spend_mana,
+		"inc_rate" : Big.new(5, 0),
+		"value" : Big.new(5, 1),
+		"max" : 1,
+		"max_signal" : well_base_maxed
+		},
+	"well_rate" : {
+		"button" : $PanelContainer/MarginContainer/VBoxContainer/well_rate,
+		"label" : $PanelContainer/MarginContainer/VBoxContainer/well_rate/MarginContainer/HBoxContainer/HBoxContainer2/cost,
+		"signal" : well_rate_increase,
+		"cost" : Big.new(1, 3),
+		"cost_signal" : spend_mana,
+		"inc_rate" : Big.new(1, 2),
+		"value" : 1,
+		"max" : 4,
+		"max_signal" : well_rate_maxed
+	},
+	"well_mult" : {
+		"button" : $PanelContainer/MarginContainer/VBoxContainer/well_mult,
+		"label" : $PanelContainer/MarginContainer/VBoxContainer/well_mult/MarginContainer/HBoxContainer/HBoxContainer2/cost,
+		"signal" : well_mult_increase,
+		"cost" : Big.new(1, 1),
+		"cost_signal" : spend_rune,
+		"inc_rate" : Big.new(1, 2),
+		"value" : Big.new(1, 0),
+		"max" : 4,
+		"max_signal" : well_mult_maxed
+	}
+}
 
 #signals
+signal spend_mana(value)
+signal spend_rune(value)
 signal well_base_increase(value)
 signal well_rate_increase(value)
-signal spend_mana(value)
-signal well_rate_maxed
+signal well_mult_increase(value)
+signal well_base_maxed()
+signal well_rate_maxed()
+signal well_mult_maxed()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -35,50 +57,57 @@ func _ready() -> void:
 	update_labels()
 
 #cost check functions
-func check_well_base_cost(value):
-	if well_base_cost.isGreaterThan(value):
-		well_base_button.disabled = true
-	else:
-		well_base_button.disabled = false
-
-func check_well_rate_cost(value):
-	if well_rate_max == 0:
-		return
-	if well_rate_cost.isGreaterThan(value):
-		well_rate_button.disabled = true
-	else:
-		well_rate_button.disabled = false
+func check_cost(type, value):
+	var upgrade_list : Dictionary = {
+		"mana" : ["well_base", "well_rate"],
+		"rune" : ["well_mult"]
+	}
+	
+	for upgrade in upgrade_list[type]:
+		if not upgrade:
+			continue
+		if upgrade_data[upgrade]["max"] == 0:
+			continue
+		if upgrade_data[upgrade]["cost"].isGreaterThan(value):
+			upgrade_data[upgrade]["button"].disabled = true
+		else:
+			upgrade_data[upgrade]["button"].disabled = false
 
 #update label functions
 func update_labels():
-	update_well_base_label()
-	update_well_rate_label()
+	for upgrade in upgrade_data:
+		update_label(upgrade)
 
-func update_well_base_label():
-	well_base_label.text = well_base_cost.toAA()
-
-func update_well_rate_label():
-	well_rate_label.text = well_rate_cost.toAA()
-
-func _on_well_base_pressed() -> void:
-	spend_mana.emit(well_base_cost)
-	well_base_increase.emit(well_base_value)
-	well_base_cost.multiplyEquals(well_base_cost_inc_rate)
-	update_well_base_label()
+func update_label(upgrade):
+	upgrade_data[upgrade]["label"].text = upgrade_data[upgrade]["cost"].toAA()
 
 func close_panel():
 	self.visible = false
 
-func _on_well_rate_pressed() -> void:
-	spend_mana.emit(well_rate_cost)
-	well_rate_increase.emit(well_rate_value)
-	well_rate_cost.multiplyEquals(well_rate_cost_inc_rate)
-	well_rate_max -= 1
-	update_well_rate_label()
-	if well_rate_max == 0:
-		handle_max_well_rate()
+func handle_upgrade(upgrade : String):
+	#storing the cost and then calling spend mana after the calculations fixes a bug.
+	#signal was resolving before the cost increased, so the button would be
+	#active despite not having enough mana for the next upgrade.
+	##Big must be new or the increased cost will be deducted from mana!!
+	var curr_cost = Big.new(upgrade_data[upgrade]["cost"])
+	upgrade_data[upgrade]["signal"].emit(upgrade_data[upgrade]["value"])
+	upgrade_data[upgrade]["cost"].multiplyEquals(upgrade_data[upgrade]["inc_rate"])
+	upgrade_data[upgrade]["cost_signal"].emit(curr_cost)
+	upgrade_data[upgrade]["max"] -= 1
+	update_label(upgrade)
+	if upgrade_data[upgrade]["max"] == 0:
+		handle_max_upgrade(upgrade)
 
-func handle_max_well_rate():
-	well_rate_label.text = "MAX"
-	well_rate_button.disabled = true
-	well_rate_maxed.emit()
+func handle_max_upgrade(upgrade : String):
+	upgrade_data[upgrade]["label"].text = "MAX"
+	upgrade_data[upgrade]["button"].disabled = true
+	upgrade_data[upgrade]["max_signal"].emit()
+
+func _on_well_base_pressed() -> void:
+	handle_upgrade("well_base")
+
+func _on_well_rate_pressed() -> void:
+	handle_upgrade("well_rate")
+
+func _on_well_mult_pressed() -> void:
+	handle_upgrade("well_mult")

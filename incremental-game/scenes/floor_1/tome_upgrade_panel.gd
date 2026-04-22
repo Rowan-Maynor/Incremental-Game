@@ -1,12 +1,17 @@
 extends Control
 
-var orb_click_base_max : int = 4
-var orb_click_base_cost : Big = Big.new(1, 1)
-var orb_click_base_cost_inc_rate : Big = Big.new(5, 0)
-var orb_click_base_value : Big = Big.new(1, 0)
-
-@onready var orb_click_base_label: Label = $PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer2/cost
-@onready var orb_click_base_button: Button = $PanelContainer/MarginContainer/VBoxContainer/click_base
+@onready var upgrade_data : Dictionary = {
+	"orb_click_base" : {
+		"button" : $PanelContainer/MarginContainer/VBoxContainer/click_base,
+		"label" : $PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer2/cost,
+		"signal" : orb_click_base_increase,
+		"cost" : Big.new(1, 1),
+		"inc_rate" : Big.new(5, 0),
+		"value" : Big.new(1, 0),
+		"max" : 4,
+		"max_signal" : orb_click_base_maxed
+		},
+}
 
 signal orb_click_base_increase(value)
 signal spend_mana(value)
@@ -21,37 +26,53 @@ func _input(event: InputEvent) -> void:
 
 func _ready() -> void:
 	Big.setSmallDecimals(0)
-	update_click_base_label()
+	update_labels()
 
-func check_orb_click_base_cost(value):
-	if orb_click_base_max == 0:
-		return
-	if orb_click_base_cost.isGreaterThan(value):
-		orb_click_base_button.disabled = true
-	else:
-		orb_click_base_button.disabled = false
+func check_cost(type, value):
+	var upgrade_list : Dictionary = {
+		"mana" : ["orb_click_base"],
+		"rune" : []
+	}
+	
+	for upgrade in upgrade_list[type]:
+		if not upgrade:
+			continue
+		if upgrade_data[upgrade]["max"] == 0:
+			continue
+		if upgrade_data[upgrade]["cost"].isGreaterThan(value):
+			upgrade_data[upgrade]["button"].disabled = true
+		else:
+			upgrade_data[upgrade]["button"].disabled = false
 
-func update_click_base_label():
-	orb_click_base_label.text = orb_click_base_cost.toAA()
+func update_labels():
+	for upgrade in upgrade_data:
+		update_label(upgrade)
 
-func _on_click_base_pressed() -> void:
+func update_label(upgrade):
+	upgrade_data[upgrade]["label"].text = upgrade_data[upgrade]["cost"].toAA()
+
+func handle_upgrade(upgrade : String):
 	#storing the cost and then calling spend mana after the calculations fixes a bug.
 	#spend_mana signal was resolving before the cost increased, so the button would be
 	#active despite not having enough mana for the next upgrade.
 	##Big must be new or the increased cost will be deducted from mana!!
-	var curr_cost : Big = Big.new(orb_click_base_cost)
-	orb_click_base_increase.emit(orb_click_base_value)
-	orb_click_base_cost.multiplyEquals(orb_click_base_cost_inc_rate)
+	var curr_cost = Big.new(upgrade_data[upgrade]["cost"])
+	upgrade_data[upgrade]["signal"].emit(upgrade_data[upgrade]["value"])
+	upgrade_data[upgrade]["cost"].multiplyEquals(upgrade_data[upgrade]["inc_rate"])
 	spend_mana.emit(curr_cost)
-	orb_click_base_max -= 1
-	update_click_base_label()
-	if orb_click_base_max == 0:
-		handle_max_orb_click_base()
+	upgrade_data[upgrade]["max"] -= 1
+	update_label(upgrade)
+	if upgrade_data[upgrade]["max"] == 0:
+		handle_max_upgrade(upgrade)
 
-func handle_max_orb_click_base():
-	orb_click_base_label.text = "MAX"
-	orb_click_base_button.disabled = true
-	orb_click_base_maxed.emit()
+func handle_max_upgrade(upgrade : String):
+	upgrade_data[upgrade]["label"].text = "MAX"
+	upgrade_data[upgrade]["button"].disabled = true
+	upgrade_data[upgrade]["max_signal"].emit()
 
 func close_panel():
 	self.visible = false
+
+
+func _on_click_base_pressed() -> void:
+	handle_upgrade("orb_click_base")

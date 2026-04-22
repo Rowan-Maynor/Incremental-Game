@@ -6,7 +6,7 @@ var unlock_goal : Big = Big.new(1, 1)
 signal tome_unlocked()
 signal open_panel()
 
-func check_unlock(value):
+func check_unlock(_type, value):
 	if not locked:
 		return
 	

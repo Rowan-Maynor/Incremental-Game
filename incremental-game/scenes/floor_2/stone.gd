@@ -1,16 +1,26 @@
 extends Node2D
 
-var click_value_base = Big.new(1)
-var click_value_mult = Big.new(1)
+var click_value_base = Big.new(1, 0)
+var click_value_mult = Big.new(1, 0)
 var locked : bool = true
 
 func _on_button_pressed() -> void:
-	var final_value : Big = click_value_base.multiply(click_value_mult)
-	gain_rune.emit(final_value, "stone")
+	if $NinePatchRect.visible == false:
+		$NinePatchRect.visible = true
+	$NinePatchRect/ProgressBar.value += 1.0
+	check_progress()
+
+func check_progress():
+	if $NinePatchRect/ProgressBar.value == $NinePatchRect/ProgressBar.max_value:
+		$NinePatchRect/ProgressBar.value = 0
+		$NinePatchRect.visible = false
+		var final_value : Big = click_value_base.multiply(click_value_mult)
+		gain_rune.emit(final_value, "stone")
 
 func check_unlock():
 	$Sprite2D.material.shader = null
 	locked = false
+	$Button.disabled = false
 	unlock_floor.emit()
 	stone_unlocked.emit()
 

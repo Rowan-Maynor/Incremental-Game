@@ -5,7 +5,7 @@ var unlock_goal : Big = Big.new(1, 4)
 
 signal unlock_stone()
 
-func check_unlock(value):
+func check_unlock(_type, value):
 	if not locked:
 		return
 	

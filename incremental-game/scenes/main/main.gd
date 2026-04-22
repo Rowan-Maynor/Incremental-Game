@@ -30,8 +30,8 @@ var save_data : Dictionary = {
 }
 
 #signals
-signal curr_mana(value)
-signal curr_rune(value)
+signal curr_mana(type, value)
+signal curr_rune(type, value)
 
 func _ready() -> void:
 	load_game()
@@ -46,22 +46,28 @@ func _process(_delta: float) -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("close_game"):
 		get_tree().quit()
+	if Input.is_action_just_pressed("add_1k_mana"):
+		gain_mana(Big.new(1, 3), "orb")
 
 #resource math functions
 #src is necessary to help control spawn_label positioning
 func gain_mana(value, src):
 	mana.plusEquals(value)
-	curr_mana.emit(mana)
+	curr_mana.emit("mana", mana)
 	spawn_label("mana", value, src)
 
 func spend_mana(value):
 	mana.minusEquals(value)
-	curr_mana.emit(mana)
+	curr_mana.emit("mana", mana)
 
 func gain_rune(value, src):
 	rune.plusEquals(value)
-	curr_rune.emit(rune)
+	curr_rune.emit("rune", rune)
 	spawn_label("rune", value, src)
+
+func spend_rune(value):
+	rune.minusEquals(value)
+	curr_rune.emit("rune", rune)
 
 #helper functions
 func spawn_label(type : String, value : Big, src : String):
@@ -138,9 +144,8 @@ func connect_signals():
 	
 	#tome upgrade panel signals
 	tome_upgrade_panel.orb_click_base_increase.connect(orb.increase_base)
-	curr_mana.connect(tome_upgrade_panel.check_orb_click_base_cost)
+	curr_mana.connect(tome_upgrade_panel.check_cost)
 	tome_upgrade_panel.spend_mana.connect(spend_mana)
-	tome_upgrade_panel.orb_click_base_maxed.connect(disconnect_orb_click_base)
 	
 	#mana well signals
 	curr_mana.connect(mana_well.check_unlock)
@@ -148,12 +153,13 @@ func connect_signals():
 	mana_well.gain_mana.connect(gain_mana)
 	
 	#well upgrade panel signals
-	curr_mana.connect(well_upgrade_panel.check_well_base_cost)
-	curr_mana.connect(well_upgrade_panel.check_well_rate_cost)
+	curr_mana.connect(well_upgrade_panel.check_cost)
+	curr_rune.connect(well_upgrade_panel.check_cost)
 	well_upgrade_panel.spend_mana.connect(spend_mana)
+	well_upgrade_panel.spend_rune.connect(spend_rune)
 	well_upgrade_panel.well_base_increase.connect(mana_well.increase_base)
 	well_upgrade_panel.well_rate_increase.connect(mana_well.increase_rate)
-	well_upgrade_panel.well_rate_maxed.connect(disconnect_well_rate)
+	well_upgrade_panel.well_mult_increase.connect(mana_well.increase_mult)
 	
 	#stone signals
 	stone.connect("gain_rune", gain_rune)
@@ -170,12 +176,6 @@ func stone_unlocked():
 		save_game()
 		show_rune_container()
 	curr_mana.disconnect(floor_2_bricks.check_unlock)
-
-func disconnect_well_rate():
-	curr_mana.disconnect(well_upgrade_panel.check_well_rate_cost)
-
-func disconnect_orb_click_base():
-	curr_mana.disconnect(tome_upgrade_panel.check_orb_click_base_cost)
 
 #panel functions
 func open_tome_upgrade_panel():

@@ -5,11 +5,11 @@ extends Control
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/swing_power,
 		"label" : $PanelContainer/MarginContainer/VBoxContainer/swing_power/MarginContainer/HBoxContainer/HBoxContainer2/cost,
 		"signal" : stone_swing_power_increase,
-		"cost" : Big.new(1, 3),
+		"cost" : Big.new(5, 3),
 		"cost_signal" : spend_mana,
-		"inc_rate" : Big.new(5, 0),
-		"value" : 2.0,
-		"max" : 3,
+		"inc_rate" : Big.new(2, 0),
+		"value" : 1.0,
+		"max" : 9,
 		},
 	"stone_base" : {
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/stone_base,
@@ -17,7 +17,7 @@ extends Control
 		"signal" : stone_base_increase,
 		"cost" : Big.new(2, 1),
 		"cost_signal" : spend_rune,
-		"inc_rate" : Big.new(5, 0),
+		"inc_rate" : Big.new(3, 0),
 		"value" : Big.new(1, 0),
 		"max" : 9,
 		},
@@ -25,7 +25,7 @@ extends Control
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/stone_auto_click,
 		"label" : $PanelContainer/MarginContainer/VBoxContainer/stone_auto_click/MarginContainer/HBoxContainer/HBoxContainer2/cost,
 		"signal" : stone_auto_click,
-		"cost" : Big.new(1, 5),
+		"cost" : Big.new(1, 3),
 		"cost_signal" : spend_rune,
 		"inc_rate" : Big.new(5, 0),
 		"value" : true,
@@ -83,8 +83,6 @@ func handle_upgrade(upgrade : String):
 	upgrade_data[upgrade]["cost"].multiplyEquals(upgrade_data[upgrade]["inc_rate"])
 	upgrade_data[upgrade]["cost_signal"].emit(curr_cost)
 	upgrade_data[upgrade]["max"] -= 1
-	if upgrade == "stone_swing_power":
-		upgrade_data["stone_swing_power"]["value"] += 1
 	update_label(upgrade)
 	if upgrade_data[upgrade]["max"] == 0:
 		handle_max_upgrade(upgrade)

@@ -17,7 +17,7 @@ extends Control
 		"signal" : well_rate_increase,
 		"cost" : Big.new(1, 3),
 		"cost_signal" : spend_mana,
-		"inc_rate" : Big.new(1, 2),
+		"inc_rate" : Big.new(3, 0),
 		"value" : 1,
 		"max" : 4,
 	},

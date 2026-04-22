@@ -7,7 +7,7 @@ extends Control
 		"signal" : orb_click_base_increase,
 		"cost" : Big.new(1, 1),
 		"cost_signal" : spend_mana,
-		"inc_rate" : Big.new(5, 0),
+		"inc_rate" : Big.new(3, 0),
 		"value" : Big.new(1, 0),
 		"max" : 9,
 		},

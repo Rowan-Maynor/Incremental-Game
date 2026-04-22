@@ -150,11 +150,13 @@ func connect_signals():
 	tome.open_panel.connect(open_tome_upgrade_panel)
 	
 	#tome upgrade panel signals
-	tome_upgrade_panel.orb_click_base_increase.connect(orb.increase_base)
-	tome_upgrade_panel.orb_auto_click.connect(orb.unlock_auto_click)
 	curr_mana.connect(tome_upgrade_panel.check_cost)
 	curr_rune.connect(tome_upgrade_panel.check_cost)
 	tome_upgrade_panel.spend_mana.connect(spend_mana)
+	tome_upgrade_panel.spend_rune.connect(spend_rune)
+	tome_upgrade_panel.orb_click_base_increase.connect(orb.increase_base)
+	tome_upgrade_panel.orb_auto_click.connect(orb.unlock_auto_click)
+	tome_upgrade_panel.orb_auto_rate_increase.connect(orb.increase_auto_rate)
 	
 	#mana well signals
 	curr_mana.connect(mana_well.check_unlock)

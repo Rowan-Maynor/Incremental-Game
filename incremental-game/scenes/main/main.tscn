@@ -152,10 +152,11 @@ layout_mode = 2
 [node name="upgrade_panels" type="CanvasLayer" parent="." unique_id=416776959]
 
 [node name="TomeUpgradePanel" parent="upgrade_panels" unique_id=524974591 instance=ExtResource("16_hxu8e")]
+visible = false
 offset_left = 316.0
 offset_top = 198.0
 offset_right = 496.0
-offset_bottom = 274.0
+offset_bottom = 307.0
 
 [node name="ManaWellUpgradePanel" parent="upgrade_panels" unique_id=762903939 instance=ExtResource("17_nvumn")]
 visible = false

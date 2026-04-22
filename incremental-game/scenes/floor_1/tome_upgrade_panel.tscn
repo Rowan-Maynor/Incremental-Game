@@ -17,7 +17,7 @@ script = ExtResource("2_7yjpg")
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1207119246]
 layout_mode = 0
 offset_right = 180.0
-offset_bottom = 76.0
+offset_bottom = 109.0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=966224754]
 layout_mode = 2
@@ -110,5 +110,48 @@ layout_mode = 2
 texture = ExtResource("5_scak4")
 stretch_mode = 3
 
+[node name="orb_auto_rate" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1474513488]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_rngrr")
+disabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate" unique_id=1934311284]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 167.0
+offset_bottom = 22.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate/MarginContainer" unique_id=568685869]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate/MarginContainer/HBoxContainer" unique_id=765108477]
+layout_mode = 2
+
+[node name="upgrade_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1613877132]
+layout_mode = 2
+texture = ExtResource("3_7yjpg")
+stretch_mode = 3
+
+[node name="upgrade_description" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate/MarginContainer/HBoxContainer/HBoxContainer" unique_id=574826789]
+layout_mode = 2
+text = "Auto Click Rate"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate/MarginContainer/HBoxContainer" unique_id=21892130]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=84101605]
+layout_mode = 2
+text = "11.00AA"
+
+[node name="cost_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1983504089]
+layout_mode = 2
+texture = ExtResource("5_scak4")
+stretch_mode = 3
+
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/click_base" to="." method="_on_click_base_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/orb_auto_click" to="." method="_on_orb_auto_click_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate" to="." method="_on_orb_auto_rate_pressed"]

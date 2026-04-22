@@ -20,11 +20,22 @@ extends Control
 		"inc_rate" : Big.new(1, 0),
 		"value" : true,
 		"max" : 1,
+	},
+	"orb_auto_rate" : {
+		"button" : $PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate,
+		"label" : $PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate/MarginContainer/HBoxContainer/HBoxContainer2/cost,
+		"signal" : orb_auto_rate_increase,
+		"cost" : Big.new(5, 1),
+		"cost_signal" : spend_rune,
+		"inc_rate" : Big.new(1, 1),
+		"value" : 0.1,
+		"max" : 9,
 	}
 }
 
 signal orb_click_base_increase(value)
 signal orb_auto_click()
+signal orb_auto_rate_increase(value)
 signal spend_mana(value)
 signal spend_rune(value)
 
@@ -42,7 +53,7 @@ func _ready() -> void:
 func check_cost(type, value):
 	var upgrade_list : Dictionary = {
 		"mana" : ["orb_click_base"],
-		"rune" : ["orb_auto_click"]
+		"rune" : ["orb_auto_click", "orb_auto_rate"]
 	}
 	
 	for upgrade in upgrade_list[type]:
@@ -88,3 +99,6 @@ func _on_click_base_pressed() -> void:
 
 func _on_orb_auto_click_pressed() -> void:
 	handle_upgrade("orb_auto_click")
+
+func _on_orb_auto_rate_pressed() -> void:
+	handle_upgrade("orb_auto_rate")

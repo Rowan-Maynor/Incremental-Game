@@ -12,6 +12,9 @@ func increase_base(value):
 func unlock_auto_click(_value):
 	$Timer.start()
 
+func increase_auto_rate(value):
+	$Timer.wait_time -= value
+
 func _on_button_pressed() -> void:
 	var final_value : Big = click_value_base.multiply(click_value_mult)
 	gain_mana.emit(final_value, "orb")

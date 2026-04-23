@@ -2,6 +2,8 @@ extends Node2D
 
 var mana : Big = Big.new(0)
 var rune : Big = Big.new(0)
+var total_mana : Big = Big.new(0)
+var total_rune : Big = Big.new(0)
 
 #interactables
 @onready var orb : Node2D = $SubViewportContainer/SubViewport/floor_1/Orb
@@ -37,6 +39,8 @@ var save_data : Dictionary = {
 #signals
 signal curr_mana(type, value)
 signal curr_rune(type, value)
+signal total_mana_gained(type, value)
+signal total_rune_gained(type, value)
 
 func _ready() -> void:
 	load_game()
@@ -60,7 +64,9 @@ func _input(_event: InputEvent) -> void:
 #src is necessary to help control spawn_label positioning
 func gain_mana(value, src):
 	mana.plusEquals(value)
+	total_mana.plusEquals(value)
 	curr_mana.emit("mana", mana)
+	total_mana_gained.emit("mana", total_mana)
 	spawn_label("mana", value, src)
 
 func spend_mana(value):
@@ -69,7 +75,9 @@ func spend_mana(value):
 
 func gain_rune(value, src):
 	rune.plusEquals(value)
+	total_rune.plusEquals(value)
 	curr_rune.emit("rune", rune)
+	total_rune_gained.emit("rune", total_rune)
 	spawn_label("rune", value, src)
 
 func spend_rune(value):
@@ -152,7 +160,7 @@ func show_rune_container():
 #signal functions
 func connect_signals():
 	#floor 1 signals
-	curr_mana.connect(floor_1_bricks.check_unlock)
+	total_mana_gained.connect(floor_1_bricks.check_unlock)
 	floor_1_bricks.unlock_stone.connect(stone.check_unlock)
 	floor_1_bricks.unlock_floor_2.connect(floor_2_bricks.unlock_floor_2)
 	
@@ -160,7 +168,7 @@ func connect_signals():
 	orb.connect("gain_mana", gain_mana)
 	
 	#tome signals
-	curr_mana.connect(tome.check_unlock)
+	total_mana_gained.connect(tome.check_unlock)
 	tome.tome_unlocked.connect(tome_unlocked)
 	tome.open_panel.connect(open_tome_upgrade_panel)
 	
@@ -174,7 +182,7 @@ func connect_signals():
 	tome_upgrade_panel.orb_auto_rate_increase.connect(orb.increase_auto_rate)
 	
 	#mana well signals
-	curr_mana.connect(mana_well.check_unlock)
+	total_mana_gained.connect(mana_well.check_unlock)
 	mana_well.open_panel.connect(open_well_upgrade_panel)
 	mana_well.gain_mana.connect(gain_mana)
 	
@@ -192,7 +200,7 @@ func connect_signals():
 	stone.stone_unlocked.connect(stone_unlocked)
 	
 	#tool shed signals
-	curr_rune.connect(tool_shed.check_unlock)
+	total_rune_gained.connect(tool_shed.check_unlock)
 	tool_shed.open_panel.connect(open_tool_shed_upgrade_panel)
 	
 	#tool shed upgrade panel signals
@@ -205,18 +213,18 @@ func connect_signals():
 	tool_shed_upgrade_panel.stone_auto_click.connect(stone.unlock_auto_click)
 	
 	#craftsman table signals
-	curr_rune.connect(craft_table.check_unlock)
+	total_rune_gained.connect(craft_table.check_unlock)
 	craft_table.open_panel.connect(open_craft_table_upgrade_panel)
 
 func tome_unlocked():
-	curr_mana.disconnect(tome.check_unlock)
+	total_mana_gained.disconnect(tome.check_unlock)
 
 func stone_unlocked():
 	if not save_data["seen_rune"]:
 		save_data["seen_rune"] = true
 		save_game()
 		show_rune_container()
-	curr_mana.disconnect(floor_1_bricks.check_unlock)
+	total_mana_gained.disconnect(floor_1_bricks.check_unlock)
 
 #panel functions
 func open_tome_upgrade_panel():

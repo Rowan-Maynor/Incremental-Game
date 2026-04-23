@@ -49,6 +49,9 @@ func increase_base(value):
 func increase_swing_power(value):
 	swing_power += value
 
+func increase_rate(value):
+	$Timer.wait_time -= value
+
 func unlock_auto_click(_value):
 	$Timer.start()
 	auto_click_unlocked = true

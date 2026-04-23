@@ -31,6 +31,7 @@ offset_left = -27.0
 offset_top = -14.0
 offset_right = 27.0
 offset_bottom = 17.0
+disabled = true
 flat = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=910310928]

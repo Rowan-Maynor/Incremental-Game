@@ -163,3 +163,7 @@ text = "11.00AA"
 layout_mode = 2
 texture = ExtResource("6_0m5ry")
 stretch_mode = 3
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/orb_multiplier" to="." method="_on_orb_multiplier_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate" to="." method="_on_stone_auto_rate_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/rock_well" to="." method="_on_rock_well_pressed"]

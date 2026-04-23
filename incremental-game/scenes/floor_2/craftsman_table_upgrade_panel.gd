@@ -5,7 +5,7 @@ extends Control
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/orb_multiplier,
 		"label" : $PanelContainer/MarginContainer/VBoxContainer/orb_multiplier/MarginContainer/HBoxContainer/HBoxContainer2/cost,
 		"signal" : orb_multiplier_increase,
-		"cost" : Big.new(5, 3),
+		"cost" : Big.new(5, 1),
 		"cost_signal" : spend_rune,
 		"inc_rate" : Big.new(2, 0),
 		"value" : Big.new(1, 0),
@@ -15,7 +15,7 @@ extends Control
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate,
 		"label" : $PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate/MarginContainer/HBoxContainer/HBoxContainer2/cost,
 		"signal" : stone_rate_increase,
-		"cost" : Big.new(2, 1),
+		"cost" : Big.new(2, 4),
 		"cost_signal" : spend_mana,
 		"inc_rate" : Big.new(2, 0),
 		"value" : 0.1,
@@ -25,9 +25,9 @@ extends Control
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/rock_well,
 		"label" : $PanelContainer/MarginContainer/VBoxContainer/rock_well/MarginContainer/HBoxContainer/HBoxContainer2/cost,
 		"signal" : unlock_rock_well,
-		"cost" : Big.new(1, 2),
+		"cost" : Big.new(5, 2),
 		"cost_signal" : spend_rune,
-		"inc_rate" : Big.new(5, 0),
+		"inc_rate" : Big.new(1, 0),
 		"value" : true,
 		"max" : 1,
 		},
@@ -93,3 +93,15 @@ func handle_max_upgrade(upgrade : String):
 
 func close_panel():
 	self.visible = false
+
+
+func _on_orb_multiplier_pressed() -> void:
+	handle_upgrade("orb_multiplier")
+
+
+func _on_stone_auto_rate_pressed() -> void:
+	handle_upgrade("stone_auto_rate")
+
+
+func _on_rock_well_pressed() -> void:
+	handle_upgrade("rock_well")

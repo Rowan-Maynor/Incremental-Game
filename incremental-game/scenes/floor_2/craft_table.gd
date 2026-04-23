@@ -1,7 +1,7 @@
 extends Node2D
 
 var locked : bool = true
-var unlock_goal : Big = Big.new(2, 1)
+var unlock_goal : Big = Big.new(3, 2)
 
 signal craft_unlocked()
 signal open_panel()

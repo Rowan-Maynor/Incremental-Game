@@ -9,7 +9,7 @@ extends Control
 		"cost_signal" : spend_mana,
 		"inc_rate" : Big.new(2, 0),
 		"value" : Big.new(1, 0),
-		"max" : 9,
+		"max" : 14,
 		},
 	"orb_auto_click" : {
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/orb_auto_click,

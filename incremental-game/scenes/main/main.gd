@@ -185,6 +185,7 @@ func connect_signals():
 	total_mana_gained.connect(mana_well.check_unlock)
 	mana_well.open_panel.connect(open_well_upgrade_panel)
 	mana_well.gain_mana.connect(gain_mana)
+	mana_well.gain_rune.connect(gain_rune)
 	
 	#well upgrade panel signals
 	curr_mana.connect(well_upgrade_panel.check_cost)
@@ -215,6 +216,15 @@ func connect_signals():
 	#craftsman table signals
 	total_rune_gained.connect(craft_table.check_unlock)
 	craft_table.open_panel.connect(open_craft_table_upgrade_panel)
+	
+	#craftsman table upgrade panel signals
+	curr_mana.connect(craft_table_upgrade_panel.check_cost)
+	curr_rune.connect(craft_table_upgrade_panel.check_cost)
+	craft_table_upgrade_panel.spend_mana.connect(spend_mana)
+	craft_table_upgrade_panel.spend_rune.connect(spend_rune)
+	craft_table_upgrade_panel.orb_multiplier_increase.connect(orb.increase_mult)
+	craft_table_upgrade_panel.stone_rate_increase.connect(stone.increase_rate)
+	craft_table_upgrade_panel.unlock_rock_well.connect(mana_well.unlock_rock_well)
 
 func tome_unlocked():
 	total_mana_gained.disconnect(tome.check_unlock)

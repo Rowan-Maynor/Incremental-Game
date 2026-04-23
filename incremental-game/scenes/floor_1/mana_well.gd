@@ -1,6 +1,7 @@
 extends Node2D
 
 var locked : bool = true
+var rock_well : bool = false
 var unlock_goal : Big = Big.new(5, 2)
 var well_base : Big = Big.new(5, 1)
 var well_mult : Big = Big.new(1, 0)
@@ -8,6 +9,7 @@ var well_mult : Big = Big.new(1, 0)
 signal mana_well_unlocked()
 signal open_panel()
 signal gain_mana(value, src)
+signal gain_rune(value, src)
 
 func check_unlock(_type, value):
 	if not locked:
@@ -51,9 +53,19 @@ func increase_rate(value):
 	else:
 		print("Exceeded maximum rate")
 
+func unlock_rock_well(value):
+	rock_well = value
+
 func _on_timer_timeout() -> void:
 	var final_value : Big = well_base.multiply(well_mult)
 	gain_mana.emit(final_value, "well")
+	if rock_well:
+		var final_rune : Big = final_value.divide(Big.new(1, 3))
+		var one : Big = Big.new(1, 0)
+		if final_rune.isLessThan(one):
+			gain_rune.emit(one, "well")
+		else:
+			gain_rune.emit(final_rune, "well")
 	$Sprite2D.play("pulse")
 
 

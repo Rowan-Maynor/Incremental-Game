@@ -9,6 +9,9 @@ signal gain_mana(value, src)
 func increase_base(value):
 	click_value_base.plusEquals(value)
 
+func increase_mult(value):
+	click_value_mult.plusEquals(value)
+
 func unlock_auto_click(_value):
 	$Timer.start()
 

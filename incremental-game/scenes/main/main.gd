@@ -9,11 +9,13 @@ var rune : Big = Big.new(0)
 @onready var mana_well : Node2D = $SubViewportContainer/SubViewport/floor_1/ManaWell
 @onready var tome : Node2D = $SubViewportContainer/SubViewport/floor_1/Tome
 @onready var tool_shed : Node2D = $SubViewportContainer/SubViewport/floor_2/ToolShed
+@onready var craft_table : Node2D = $SubViewportContainer/SubViewport/floor_2/CraftTable
 
 #upgrade panels
 @onready var tome_upgrade_panel : Control = $upgrade_panels/TomeUpgradePanel
 @onready var well_upgrade_panel : Control = $upgrade_panels/ManaWellUpgradePanel
 @onready var tool_shed_upgrade_panel : Control = $upgrade_panels/ToolShedUpgradePanel
+@onready var craft_table_upgrade_panel : Control = $upgrade_panels/CraftsmanTableUpgradePanel
 
 #floor_bricks
 @onready var floor_1_bricks : Control = $SubViewportContainer/SubViewport/floor_1/Bricks
@@ -193,7 +195,7 @@ func connect_signals():
 	curr_rune.connect(tool_shed.check_unlock)
 	tool_shed.open_panel.connect(open_tool_shed_upgrade_panel)
 	
-	#too shed upgrade panel signals
+	#tool shed upgrade panel signals
 	curr_mana.connect(tool_shed_upgrade_panel.check_cost)
 	curr_rune.connect(tool_shed_upgrade_panel.check_cost)
 	tool_shed_upgrade_panel.spend_mana.connect(spend_mana)
@@ -202,6 +204,9 @@ func connect_signals():
 	tool_shed_upgrade_panel.stone_base_increase.connect(stone.increase_base)
 	tool_shed_upgrade_panel.stone_auto_click.connect(stone.unlock_auto_click)
 	
+	#craftsman table signals
+	curr_rune.connect(craft_table.check_unlock)
+	craft_table.open_panel.connect(open_craft_table_upgrade_panel)
 
 func tome_unlocked():
 	curr_mana.disconnect(tome.check_unlock)
@@ -222,3 +227,6 @@ func open_well_upgrade_panel():
 
 func open_tool_shed_upgrade_panel():
 	tool_shed_upgrade_panel.visible = true
+
+func open_craft_table_upgrade_panel():
+	craft_table_upgrade_panel.visible = true

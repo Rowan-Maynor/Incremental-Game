@@ -107,7 +107,7 @@ text = "11.00AA"
 
 [node name="cost_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/orb_auto_click/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1396502734]
 layout_mode = 2
-texture = ExtResource("5_scak4")
+texture = ExtResource("2_guay7")
 stretch_mode = 3
 
 [node name="orb_auto_rate" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1474513488]

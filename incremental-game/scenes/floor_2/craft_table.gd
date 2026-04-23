@@ -1,9 +1,9 @@
 extends Node2D
 
 var locked : bool = true
-var unlock_goal : Big = Big.new(1, 1)
+var unlock_goal : Big = Big.new(2, 1)
 
-signal tool_unlocked()
+signal craft_unlocked()
 signal open_panel()
 
 func check_unlock(_type, value):
@@ -14,7 +14,7 @@ func check_unlock(_type, value):
 		$Sprite2D.material.shader = null
 		locked = false
 		$Button.disabled = false
-		emit_signal("tool_unlocked")
+		craft_unlocked.emit()
 		$NinePatchRect.visible = false
 	elif value.isGreaterThan(0) and locked:
 			var percentage : Big = value.divide(unlock_goal)

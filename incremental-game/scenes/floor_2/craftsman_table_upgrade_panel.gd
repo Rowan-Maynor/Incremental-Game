@@ -1,43 +1,43 @@
 extends Control
 
 @onready var upgrade_data : Dictionary = {
-	"orb_click_base" : {
-		"button" : $PanelContainer/MarginContainer/VBoxContainer/click_base,
-		"label" : $PanelContainer/MarginContainer/VBoxContainer/click_base/MarginContainer/HBoxContainer/HBoxContainer2/cost,
-		"signal" : orb_click_base_increase,
-		"cost" : Big.new(1, 1),
-		"cost_signal" : spend_mana,
+	"orb_multiplier" : {
+		"button" : $PanelContainer/MarginContainer/VBoxContainer/orb_multiplier,
+		"label" : $PanelContainer/MarginContainer/VBoxContainer/orb_multiplier/MarginContainer/HBoxContainer/HBoxContainer2/cost,
+		"signal" : orb_multiplier_increase,
+		"cost" : Big.new(5, 3),
+		"cost_signal" : spend_rune,
 		"inc_rate" : Big.new(2, 0),
 		"value" : Big.new(1, 0),
-		"max" : 9,
+		"max" : 5,
 		},
-	"orb_auto_click" : {
-		"button" : $PanelContainer/MarginContainer/VBoxContainer/orb_auto_click,
-		"label" : $PanelContainer/MarginContainer/VBoxContainer/orb_auto_click/MarginContainer/HBoxContainer/HBoxContainer2/cost,
-		"signal" : orb_auto_click,
-		"cost" : Big.new(5, 2),
+	"stone_auto_rate" : {
+		"button" : $PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate,
+		"label" : $PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate/MarginContainer/HBoxContainer/HBoxContainer2/cost,
+		"signal" : stone_rate_increase,
+		"cost" : Big.new(2, 1),
 		"cost_signal" : spend_mana,
-		"inc_rate" : Big.new(1, 0),
-		"value" : true,
-		"max" : 1,
-	},
-	"orb_auto_rate" : {
-		"button" : $PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate,
-		"label" : $PanelContainer/MarginContainer/VBoxContainer/orb_auto_rate/MarginContainer/HBoxContainer/HBoxContainer2/cost,
-		"signal" : orb_auto_rate_increase,
-		"cost" : Big.new(5, 1),
-		"cost_signal" : spend_rune,
 		"inc_rate" : Big.new(2, 0),
 		"value" : 0.1,
 		"max" : 9,
-	}
+		},
+	"rock_well" : {
+		"button" : $PanelContainer/MarginContainer/VBoxContainer/rock_well,
+		"label" : $PanelContainer/MarginContainer/VBoxContainer/rock_well/MarginContainer/HBoxContainer/HBoxContainer2/cost,
+		"signal" : unlock_rock_well,
+		"cost" : Big.new(1, 2),
+		"cost_signal" : spend_rune,
+		"inc_rate" : Big.new(5, 0),
+		"value" : true,
+		"max" : 1,
+		},
 }
 
-signal orb_click_base_increase(value)
-signal orb_auto_click()
-signal orb_auto_rate_increase(value)
 signal spend_mana(value)
 signal spend_rune(value)
+signal orb_multiplier_increase()
+signal stone_rate_increase()
+signal unlock_rock_well()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
@@ -52,8 +52,8 @@ func _ready() -> void:
 
 func check_cost(type, value):
 	var upgrade_list : Dictionary = {
-		"mana" : ["orb_click_base", "orb_auto_click"],
-		"rune" : ["orb_auto_rate"]
+		"mana" : ["stone_auto_rate"],
+		"rune" : ["orb_multiplier", "rock_well"]
 	}
 	
 	for upgrade in upgrade_list[type]:
@@ -93,12 +93,3 @@ func handle_max_upgrade(upgrade : String):
 
 func close_panel():
 	self.visible = false
-
-func _on_click_base_pressed() -> void:
-	handle_upgrade("orb_click_base")
-
-func _on_orb_auto_click_pressed() -> void:
-	handle_upgrade("orb_auto_click")
-
-func _on_orb_auto_rate_pressed() -> void:
-	handle_upgrade("orb_auto_rate")

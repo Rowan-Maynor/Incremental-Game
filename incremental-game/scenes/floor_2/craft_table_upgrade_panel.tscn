@@ -1,0 +1,165 @@
+[gd_scene format=3 uid="uid://cquy43r8bc845"]
+
+[ext_resource type="Theme" uid="uid://dy0lsyvx4ik0u" path="res://purple_theme.tres" id="1_6t414"]
+[ext_resource type="Script" uid="uid://db1m5wbc5sjq0" path="res://scenes/floor_2/craftsman_table_upgrade_panel.gd" id="2_i01xm"]
+[ext_resource type="Texture2D" uid="uid://ls6nrpd7hjo5" path="res://assets/ui/purple_nine_patch_panel.png" id="3_i01xm"]
+[ext_resource type="Texture2D" uid="uid://c7saqw10f10ce" path="res://assets/ui/stone_icon_16px.png" id="4_2nbny"]
+[ext_resource type="Texture2D" uid="uid://bw3hsausam2w0" path="res://assets/ui/orb_icon_16px.png" id="4_aeptd"]
+[ext_resource type="Texture2D" uid="uid://cpyh8w0rmpcbe" path="res://assets/ui/mana_icon.png" id="5_aeptd"]
+[ext_resource type="Texture2D" uid="uid://cdu5wxmkt65s6" path="res://assets/ui/rune_icon.png" id="6_0m5ry"]
+[ext_resource type="Texture2D" uid="uid://4xk6yu8ugr7d" path="res://assets/ui/well_icon_16.png" id="8_0m5ry"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qq8gy"]
+texture = ExtResource("3_i01xm")
+texture_margin_left = 6.0
+texture_margin_top = 6.0
+texture_margin_right = 6.0
+texture_margin_bottom = 6.0
+
+[node name="CraftsmanTableUpgradePanel" type="Control" unique_id=762903939]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -461.0
+offset_bottom = -251.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_6t414")
+script = ExtResource("2_i01xm")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2052673948]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 109.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_qq8gy")
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=860081058]
+layout_mode = 2
+theme_override_constants/margin_bottom = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=858609624]
+layout_mode = 2
+
+[node name="orb_multiplier" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1434199705]
+layout_mode = 2
+size_flags_vertical = 3
+disabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/orb_multiplier" unique_id=879338682]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 167.0
+offset_bottom = 22.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/orb_multiplier/MarginContainer" unique_id=1096495897]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/orb_multiplier/MarginContainer/HBoxContainer" unique_id=786812470]
+layout_mode = 2
+
+[node name="upgrade_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/orb_multiplier/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1717898072]
+layout_mode = 2
+texture = ExtResource("4_aeptd")
+stretch_mode = 3
+
+[node name="upgrade_description" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/orb_multiplier/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1387770643]
+layout_mode = 2
+text = "Increase Multiplier"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/orb_multiplier/MarginContainer/HBoxContainer" unique_id=1859072370]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/orb_multiplier/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1628388104]
+layout_mode = 2
+text = "11.00AA"
+
+[node name="cost_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/orb_multiplier/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1465128476]
+layout_mode = 2
+texture = ExtResource("6_0m5ry")
+stretch_mode = 3
+
+[node name="stone_auto_rate" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1327292480]
+layout_mode = 2
+size_flags_vertical = 3
+disabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate" unique_id=32033597]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 167.0
+offset_bottom = 22.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate/MarginContainer" unique_id=1816834245]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate/MarginContainer/HBoxContainer" unique_id=1828223316]
+layout_mode = 2
+
+[node name="upgrade_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate/MarginContainer/HBoxContainer/HBoxContainer" unique_id=379140283]
+layout_mode = 2
+texture = ExtResource("4_2nbny")
+stretch_mode = 3
+
+[node name="upgrade_description" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1128215594]
+layout_mode = 2
+text = "Auto Click Rate"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate/MarginContainer/HBoxContainer" unique_id=2119682021]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=631843631]
+layout_mode = 2
+text = "11.00AA"
+
+[node name="cost_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/stone_auto_rate/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=1455830680]
+layout_mode = 2
+texture = ExtResource("5_aeptd")
+stretch_mode = 3
+
+[node name="rock_well" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1390132530]
+layout_mode = 2
+size_flags_vertical = 3
+disabled = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/rock_well" unique_id=543922981]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 167.0
+offset_bottom = 22.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/rock_well/MarginContainer" unique_id=364875367]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/rock_well/MarginContainer/HBoxContainer" unique_id=495036326]
+layout_mode = 2
+
+[node name="upgrade_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/rock_well/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1905363539]
+layout_mode = 2
+texture = ExtResource("8_0m5ry")
+stretch_mode = 3
+
+[node name="upgrade_description" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/rock_well/MarginContainer/HBoxContainer/HBoxContainer" unique_id=1355479651]
+layout_mode = 2
+text = "Rock Well"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/rock_well/MarginContainer/HBoxContainer" unique_id=1797457867]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/rock_well/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=542069433]
+layout_mode = 2
+text = "11.00AA"
+
+[node name="cost_sprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/rock_well/MarginContainer/HBoxContainer/HBoxContainer2" unique_id=896681612]
+layout_mode = 2
+texture = ExtResource("6_0m5ry")
+stretch_mode = 3

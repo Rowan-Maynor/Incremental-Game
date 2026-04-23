@@ -9,7 +9,7 @@ extends Control
 		"cost_signal" : spend_mana,
 		"inc_rate" : Big.new(2, 0),
 		"value" : 1.0,
-		"max" : 9,
+		"max" : 5,
 		},
 	"stone_base" : {
 		"button" : $PanelContainer/MarginContainer/VBoxContainer/stone_base,
@@ -17,7 +17,7 @@ extends Control
 		"signal" : stone_base_increase,
 		"cost" : Big.new(2, 1),
 		"cost_signal" : spend_rune,
-		"inc_rate" : Big.new(3, 0),
+		"inc_rate" : Big.new(2, 0),
 		"value" : Big.new(1, 0),
 		"max" : 9,
 		},
@@ -83,6 +83,9 @@ func handle_upgrade(upgrade : String):
 	upgrade_data[upgrade]["cost"].multiplyEquals(upgrade_data[upgrade]["inc_rate"])
 	upgrade_data[upgrade]["cost_signal"].emit(curr_cost)
 	upgrade_data[upgrade]["max"] -= 1
+	if upgrade == "stone_swing_power":
+		if upgrade_data[upgrade]["max"] == 1:
+			upgrade_data[upgrade]["value"] += 4.0
 	update_label(upgrade)
 	if upgrade_data[upgrade]["max"] == 0:
 		handle_max_upgrade(upgrade)

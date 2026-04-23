@@ -10,7 +10,7 @@ signal gain_rune(value, src)
 signal unlock_floor()
 signal stone_unlocked()
 
-func _on_button_pressed() -> void:
+func strike_stone():
 	if $NinePatchRect.visible == false:
 		$NinePatchRect.visible = true
 	$NinePatchRect/ProgressBar.value += swing_power
@@ -38,10 +38,10 @@ func _on_button_mouse_entered() -> void:
 		var shader : Shader = load("res://shaders/outline.gdshader")
 		$Sprite2D.material.shader = shader
 
-
 func _on_button_mouse_exited() -> void:
 	if !locked and $Sprite2D.material.shader != null:
 		$Sprite2D.material.shader = null
+	$hold_timer.stop()
 
 func increase_base(value):
 	click_value_base.plusEquals(value)
@@ -57,4 +57,14 @@ func unlock_auto_click(_value):
 	auto_click_unlocked = true
 
 func _on_timer_timeout() -> void:
-	_on_button_pressed()
+	strike_stone()
+
+func _on_hold_timer_timeout() -> void:
+	strike_stone()
+
+func _on_button_button_down() -> void:
+	strike_stone()
+	$hold_timer.start()
+
+func _on_button_button_up() -> void:
+	$hold_timer.stop()
